@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ArrowRight, BarChart3, BrainCircuit, BriefcaseBusiness, Check, ChevronRight, Globe2, Handshake, LineChart, Mail, MapPin, Network, ShieldCheck, Sparkles, Target, TrendingUp, UsersRound } from 'lucide-react';
+import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
+import { ArrowRight, BarChart3, BrainCircuit, BriefcaseBusiness, Check, ChevronRight, Globe2, Handshake, Instagram, Linkedin, LineChart, Mail, MapPin, Network, ShieldCheck, Sparkles, Target, TrendingUp, UsersRound } from 'lucide-react';
 import './styles.css';
 
 const expertises = [
@@ -42,8 +43,83 @@ const approach = [
   'Renforcer la confiance dans la relation commerciale',
 ];
 
-function App() {
+const HOME_TITLE = 'Lejour Consulting | Développement commercial & relation stratégique';
+const HOME_DESCRIPTION =
+  'Frédéric Lejour accompagne entreprises et professionnels dans leurs enjeux de croissance, d’acquisition client et de performance commerciale.';
+
+function usePageMeta(title, description) {
+  useEffect(() => {
+    document.title = title;
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'description');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', description);
+  }, [title, description]);
+}
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    if (!window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname]);
+  return null;
+}
+
+function TikTokIcon({ size = 20 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.6c.27 0 .53.04.78.12V9.77a5.7 5.7 0 0 0-.78-.05 5.69 5.69 0 1 0 5.69 5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.29 4.29 0 0 1-3.25-1.48Z" />
+    </svg>
+  );
+}
+
+const socials = [
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/fredericlejour/', Icon: Linkedin },
+  { label: 'Instagram', href: 'https://www.instagram.com/lejourconsulting/', Icon: Instagram },
+  { label: 'TikTok', href: 'https://www.tiktok.com/@fred.lejour', Icon: TikTokIcon },
+];
+
+function SocialLinks() {
+  return (
+    <div className="social-links">
+      {socials.map(({ label, href, Icon }) => (
+        <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label}>
+          <Icon size={20} />
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer className="footer section-shell">
+      <div className="footer-content">
+        <strong>Lejour Consulting</strong>
+        <div className="footer-links">
+          <a href="/#expertises">Expertises</a>
+          <a href="/#parcours">Parcours</a>
+          <a href="/#contact">Contact</a>
+          <Link to="/mentions-legales">Mentions légales</Link>
+          <Link to="/politique-confidentialite">Politique de confidentialité</Link>
+        </div>
+        <SocialLinks />
+      </div>
+      <div className="footer-legal">
+        <span>© 2026 Lejour Consulting. Tous droits réservés.</span>
+      </div>
+    </footer>
+  );
+}
+
+function Home() {
   const [status, setStatus] = useState('idle');
+  usePageMeta(HOME_TITLE, HOME_DESCRIPTION);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -227,6 +303,7 @@ function App() {
               <a href="mailto:frederic.lejour@lejourconsulting.com"><Mail size={18} /> frederic.lejour@lejourconsulting.com</a>
               <span><MapPin size={18} /> Europe • France / Allemagne / Espagne</span>
             </div>
+            <SocialLinks />
           </div>
           <form className="contact-form" onSubmit={handleSubmit}>
             <input type="hidden" name="access_key" value="21d49848-72e4-4d6c-99d2-6ed4c93e1a6d" />
@@ -281,21 +358,106 @@ function App() {
         </div>
       </section>
 
-      <footer className="footer section-shell">
-        <div className="footer-content">
-          <strong>Lejour Consulting</strong>
-          <div className="footer-links">
-            <a href="#expertises">Expertises</a>
-            <a href="#parcours">Parcours</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <div className="footer-legal">
-            <span>© 2026 Lejour Consulting. Tous droits réservés.</span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+function LegalLayout({ children }) {
+  return (
+    <main className="legal-page">
+      <div className="legal-nav-shell">
+        <nav className="nav">
+          <Link className="brand" to="/" aria-label="Lejour Consulting accueil">
+            <span>LC</span>
+            <strong>Lejour Consulting</strong>
+          </Link>
+          <div className="nav-links">
+            <a href="/#expertises">Expertises</a>
+            <a href="/#parcours">Parcours</a>
+            <a href="/#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+      <section className="legal-content reveal">{children}</section>
+      <SiteFooter />
+    </main>
+  );
+}
+
+function MentionsLegales() {
+  usePageMeta(
+    'Mentions légales | Lejour Consulting',
+    'Mentions légales du site Lejour Consulting : éditeur, coordonnées, hébergement et informations légales.'
+  );
+  return (
+    <LegalLayout>
+      <span className="section-kicker">Informations légales</span>
+      <h1>Mentions légales</h1>
+      <h2>Éditeur du site</h2>
+      <p>Frédéric Lejour<br />Lejour Consulting</p>
+      <h2>Email</h2>
+      <p><a href="mailto:frederic.lejour@lejourconsulting.com">frederic.lejour@lejourconsulting.com</a></p>
+      <h2>Activité</h2>
+      <p>Conseil en développement commercial, relation stratégique et performance commerciale.</p>
+      <h2>Zone d’intervention</h2>
+      <p>France, Allemagne, Espagne et international.</p>
+      <h2>Hébergement</h2>
+      <p>Vercel Inc.<br />440 N Barranca Ave #4133<br />Covina, CA 91723<br />United States</p>
+      <h2>Nom de domaine</h2>
+      <p>www.lejourconsulting.com</p>
+    </LegalLayout>
+  );
+}
+
+function PolitiqueConfidentialite() {
+  usePageMeta(
+    'Politique de confidentialité | Lejour Consulting',
+    'Politique de confidentialité de Lejour Consulting : données collectées, finalité, base légale, durée de conservation, prestataires et droits RGPD.'
+  );
+  return (
+    <LegalLayout>
+      <span className="section-kicker">Confidentialité</span>
+      <h1>Politique de confidentialité</h1>
+      <h2>Données collectées</h2>
+      <p>Via le formulaire de contact, les données suivantes peuvent être collectées :</p>
+      <ul>
+        <li>Nom</li>
+        <li>Email</li>
+        <li>Téléphone</li>
+        <li>Entreprise</li>
+        <li>Message</li>
+      </ul>
+      <h2>Finalité</h2>
+      <p>Répondre aux demandes de contact.</p>
+      <h2>Base légale</h2>
+      <p>Consentement de l’utilisateur.</p>
+      <h2>Durée de conservation</h2>
+      <p>Durée nécessaire au traitement de la demande.</p>
+      <h2>Prestataires</h2>
+      <p>Les données peuvent être traitées par les prestataires suivants :</p>
+      <ul>
+        <li>Web3Forms — traitement et transmission des messages du formulaire</li>
+        <li>Vercel — hébergement du site</li>
+      </ul>
+      <h2>Vos droits</h2>
+      <p>
+        Conformément à la réglementation applicable (RGPD), vous disposez d’un droit d’accès, de
+        rectification, de suppression et d’opposition concernant vos données personnelles.
+      </p>
+      <h2>Contact RGPD</h2>
+      <p><a href="mailto:frederic.lejour@lejourconsulting.com">frederic.lejour@lejourconsulting.com</a></p>
+    </LegalLayout>
+  );
+}
+
+createRoot(document.getElementById('root')).render(
+  <BrowserRouter>
+    <ScrollToTop />
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/mentions-legales" element={<MentionsLegales />} />
+      <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+    </Routes>
+  </BrowserRouter>
+);
