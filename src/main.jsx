@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { ArrowRight, BarChart3, BrainCircuit, BriefcaseBusiness, Check, ChevronRight, Globe2, Handshake, LineChart, Mail, MapPin, Network, ShieldCheck, Sparkles, Target, TrendingUp, UsersRound } from 'lucide-react';
 import './styles.css';
@@ -43,6 +43,31 @@ const approach = [
 ];
 
 function App() {
+  const [status, setStatus] = useState('idle');
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus('sending');
+    const form = event.target;
+    const formData = new FormData(form);
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+      });
+      const data = await response.json();
+      if (data.success) {
+        setStatus('success');
+        form.reset();
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
   return (
     <main>
       <section className="hero" id="top">
@@ -199,15 +224,33 @@ function App() {
               acquisition, relation stratégique, performance commerciale ou transformation.
             </p>
             <div className="contact-details">
-              <a href="mailto:contact@lejourconsulting.com"><Mail size={18} /> contact@lejourconsulting.com</a>
+              <a href="mailto:frederic.lejour@lejourconsulting.com"><Mail size={18} /> frederic.lejour@lejourconsulting.com</a>
               <span><MapPin size={18} /> Europe • France / Allemagne / Espagne</span>
             </div>
           </div>
-          <form className="contact-form">
-            <label>Nom<input type="text" name="name" placeholder="Votre nom" /></label>
-            <label>Email<input type="email" name="email" placeholder="vous@entreprise.com" /></label>
-            <label>Message<textarea name="message" rows="4" placeholder="Votre enjeu principal" /></label>
-            <button className="btn primary" type="submit">Envoyer la demande <ChevronRight size={18} /></button>
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <input type="hidden" name="access_key" value="21d49848-72e4-4d6c-99d2-6ed4c93e1a6d" />
+            <input type="hidden" name="subject" value="Nouveau contact depuis LejourConsulting.com" />
+            <input type="hidden" name="from_name" value="Lejour Consulting" />
+            <input type="checkbox" name="botcheck" tabIndex={-1} autoComplete="off" style={{ display: 'none' }} />
+            <label>Nom<input type="text" name="name" placeholder="Votre nom" required /></label>
+            <label>Email<input type="email" name="email" placeholder="vous@entreprise.com" required /></label>
+            <label>Téléphone<input type="tel" name="phone" placeholder="Votre numéro" /></label>
+            <label>Entreprise<input type="text" name="company" placeholder="Votre entreprise" /></label>
+            <label>Message<textarea name="message" rows="4" placeholder="Votre enjeu principal" required /></label>
+            <button className="btn primary" type="submit" disabled={status === 'sending'}>
+              {status === 'sending' ? 'Envoi en cours…' : <>Envoyer la demande <ChevronRight size={18} /></>}
+            </button>
+            {status === 'success' && (
+              <p role="status" style={{ margin: 0, color: 'var(--cyan)', fontSize: '0.95rem', lineHeight: 1.5 }}>
+                Merci pour votre message. Je reviendrai vers vous rapidement.
+              </p>
+            )}
+            {status === 'error' && (
+              <p role="alert" style={{ margin: 0, color: '#ff8585', fontSize: '0.95rem', lineHeight: 1.5 }}>
+                Une erreur est survenue. Merci de réessayer ou de me contacter directement par email.
+              </p>
+            )}
           </form>
         </div>
       </section>
