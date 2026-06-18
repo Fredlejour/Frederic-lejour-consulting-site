@@ -241,11 +241,6 @@ function App() {
             <button className="btn primary" type="submit" disabled={status === 'sending'}>
               {status === 'sending' ? 'Envoi en cours…' : <>Envoyer la demande <ChevronRight size={18} /></>}
             </button>
-            {status === 'success' && (
-              <p role="status" style={{ margin: 0, color: 'var(--cyan)', fontSize: '0.95rem', lineHeight: 1.5 }}>
-                Merci pour votre message. Je reviendrai vers vous rapidement.
-              </p>
-            )}
             {status === 'error' && (
               <p role="alert" style={{ margin: 0, color: '#ff8585', fontSize: '0.95rem', lineHeight: 1.5 }}>
                 Une erreur est survenue. Merci de réessayer ou de me contacter directement par email.
@@ -253,6 +248,25 @@ function App() {
             )}
           </form>
         </div>
+
+        {status === 'success' && (
+          <div
+            className="modal-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="success-modal-title"
+            onClick={() => setStatus('idle')}
+          >
+            <div className="modal-card" onClick={(event) => event.stopPropagation()}>
+              <div className="modal-icon"><Check size={28} /></div>
+              <h3 id="success-modal-title">Message envoyé avec succès</h3>
+              <p>Merci pour votre message. Je reviendrai vers vous rapidement.</p>
+              <button type="button" className="btn primary" onClick={() => setStatus('idle')}>
+                Fermer
+              </button>
+            </div>
+          </div>
+        )}
       </section>
 
       <section className="section-shell signature-section">
