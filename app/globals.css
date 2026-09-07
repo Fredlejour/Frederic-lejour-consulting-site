@@ -3,8 +3,85 @@
 @tailwind utilities;
 
 /*
- * Phase 1 — plomberie uniquement.
+ * Phase 2 — design system « Autorité chaleureuse ».
  *
- * Aucun style de marque, aucune police, aucun composant : le design system
- * « Autorité chaleureuse » sera construit en Phase 2.
+ * Les variables CSS ci-dessous constituent la source de vérité des jetons
+ * sémantiques. Elles sont surchargées par les classes `.theme-ivory` et
+ * `.theme-graphite` pour permettre les sections claires et foncées.
  */
+
+:root,
+.theme-ivory {
+  --color-background: #F4EFE6;
+  --color-foreground: #11100E;
+  /* `muted` légèrement renforcé pour garantir WCAG 2.1 AA tout en
+     conservant une hiérarchie visuelle nette par rapport au texte principal. */
+  --color-muted: rgba(17, 16, 14, 0.70);
+  --color-accent: #B08D57;
+  --color-surface: #F7F3EC;
+  --color-border: rgba(17, 16, 14, 0.12);
+  --color-focus: #B08D57;
+  --color-accent-foreground: #11100E;
+}
+
+.theme-craie {
+  --color-background: #F7F3EC;
+  --color-foreground: #11100E;
+  --color-muted: rgba(17, 16, 14, 0.70);
+  --color-accent: #B08D57;
+  --color-surface: #F4EFE6;
+  --color-border: rgba(17, 16, 14, 0.10);
+  --color-focus: #B08D57;
+  --color-accent-foreground: #11100E;
+}
+
+.theme-graphite {
+  --color-background: #11100E;
+  --color-foreground: #F7F3EC;
+  --color-muted: rgba(244, 239, 230, 0.74);
+  --color-accent: #B08D57;
+  --color-surface: rgba(244, 239, 230, 0.06);
+  --color-border: rgba(244, 239, 230, 0.14);
+  --color-focus: #B08D57;
+  --color-accent-foreground: #11100E;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display break-words;
+  }
+
+  ::selection {
+    background-color: var(--color-foreground);
+    color: var(--color-background);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-foreground);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

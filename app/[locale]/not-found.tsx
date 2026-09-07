@@ -1,32 +1,34 @@
 import Link from 'next/link';
 import { defaultLocale } from '@/lib/i18n';
 import { pathFor } from '@/lib/routes';
+import { Button, ButtonLink } from '@/components/ui/Button';
+import { Section } from '@/components/ui/Section';
 
 /**
  * Page 404 — renvoie bien un code HTTP 404.
  *
- * Phase 1 : libellés techniques neutres, dans les deux langues, en attendant
- * les contenus rédigés. Un composant `not-found` ne reçoit pas les paramètres
- * de route : la langue ne peut donc pas être déduite ici, d'où l'affichage
- * bilingue et les liens vers les deux accueils.
+ * Phase 2 : cette page utilise les composants du design system. Un composant
+ * `not-found` ne reçoit pas les paramètres de route : la langue ne peut donc
+ * pas être déduite ici, d’où l’affichage bilingue et les liens vers les deux
+ * accueils.
  */
 export default function NotFound() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-16 font-mono text-sm">
-      <h1 className="text-xl">404</h1>
-      <p className="mt-4 text-taupe">Page introuvable. — Seite nicht gefunden.</p>
-      <ul className="mt-8 space-y-1">
-        <li>
-          <Link className="underline" href={pathFor(defaultLocale, 'home')}>
-            /fr/
-          </Link>
-        </li>
-        <li>
-          <Link className="underline" href={pathFor('de', 'home')}>
-            /de/
-          </Link>
-        </li>
-      </ul>
-    </main>
+    <Section variant="craie">
+      <div className="text-center">
+        <h1 className="font-display text-display-md text-foreground">404</h1>
+        <p className="mx-auto mt-6 max-w-prose text-body-lg text-muted">
+          Page introuvable. — Seite nicht gefunden.
+        </p>
+        <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <ButtonLink href={pathFor(defaultLocale, 'home')}>
+            Retour à l’accueil
+          </ButtonLink>
+          <ButtonLink href={pathFor('de', 'home')} variant="secondary">
+            Zurück zur Startseite
+          </ButtonLink>
+        </div>
+      </div>
+    </Section>
   );
 }

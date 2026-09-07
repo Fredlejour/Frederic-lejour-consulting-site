@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { RouteScaffold } from '@/components/dev/RouteScaffold';
+import { DesignSystemDemo } from '@/components/DesignSystemDemo';
 import { isLocale, locales, ogLocale, type Locale } from '@/lib/i18n';
 import { alternatesFor, urlFor } from '@/lib/routes';
 
-/** Accueil de chaque langue : /fr/ et /de/. */
+/** Accueil de chaque langue : /fr/ et /de/. Phase 2 : démonstration du design system. */
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -29,5 +29,5 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
 
 export default function HomePage({ params }: { params: { locale: string } }) {
   if (!isLocale(params.locale)) notFound();
-  return <RouteScaffold locale={params.locale as Locale} pageKey="home" />;
+  return <DesignSystemDemo locale={params.locale as Locale} />;
 }

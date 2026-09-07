@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { RouteScaffold } from '@/components/dev/RouteScaffold';
 import { isLocale, locales, ogLocale, type Locale } from '@/lib/i18n';
 import {
   alternatesFor,
@@ -14,10 +13,10 @@ import {
 /**
  * Détail d'une réalisation : /fr/realisations/[projet] ↔ /de/projekte/[projekt].
  *
- * Aucune étude de cas n'est déclarée en Phase 1 : la liste
- * `caseStudySlugs` est vide, donc toute URL de ce niveau renvoie
- * actuellement une erreur 404. Les cas seront ajoutés en Phase 3 puis
- * Phase 5, uniquement à partir de contenus fournis et validés.
+ * Aucune étude de cas n'est déclarée en Phase 2 : la liste `caseStudySlugs`
+ * reste vide, donc toute URL de ce niveau renvoie une véritable erreur 404.
+ * Les cas seront ajoutés en Phase 3 puis Phase 5, uniquement à partir de
+ * contenus fournis et validés.
  */
 
 export function generateStaticParams() {
@@ -66,5 +65,6 @@ export default function CaseStudyPage({
   const entry = caseStudyFromSlug(locale, params.child);
   if (!entry) notFound();
 
-  return <RouteScaffold locale={locale} pageKey="work" childSlug={entry[locale]} />;
+  // Les études de cas ne sont pas encore publiées.
+  notFound();
 }

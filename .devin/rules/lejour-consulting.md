@@ -38,5 +38,5 @@ trigger: always_on
 
 ## Direction artistique
 
-- Concept validé : « Autorité chaleureuse ». Palette : graphite `#11100E`, ivoire `#F4EFE6`, or patiné `#B08D57`, taupe `#8F887E`, craie `#FBFAF7`.
+- Concept validé : « Autorité chaleureuse ». Palette : graphite `#11100E`, ivoire `#F4EFE6`, or patiné `#B08D57`, taupe `#8F887E`, craie `#F7F3EC`.
 - Interdits : bleu nuit et cyan, glassmorphism, faux graphiques ou dashboards, apparence de template SaaS, noir et or « luxe artificiel », banques d'images génériques, cartes répétitives à icônes, animations spectaculaires, slogans commerciaux creux.

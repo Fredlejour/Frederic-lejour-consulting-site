@@ -1,9 +1,9 @@
 /**
  * Registre des URL — source de vérité unique.
  *
- * Le sélecteur de langue, les balises `hreflang`, le fil d'Ariane et le
+ * Le sélecteur de langue, les balises `hreflang`, le fil d’Ariane et le
  * sitemap doivent tous dériver de ce fichier. Un slug ne peut donc pas
- * diverger d'un usage à l'autre.
+ * diverger d’un usage à l’autre.
  *
  * Les slugs allemands ne sont pas des traductions littérales : ils suivent
  * les usages professionnels allemands.
@@ -23,7 +23,7 @@ export type PageKey =
   | 'legalNotice'
   | 'privacy';
 
-/** Slug par langue. La chaîne vide correspond à l'accueil de la langue. */
+/** Slug par langue. La chaîne vide correspond à l’accueil de la langue. */
 type SlugMap = Record<Locale, string>;
 
 export const routes: Record<PageKey, SlugMap> = {
@@ -39,7 +39,25 @@ export const routes: Record<PageKey, SlugMap> = {
 
 export const pageKeys = Object.keys(routes) as PageKey[];
 
-/** Chemin absolu d'une page, avec préfixe de langue. */
+/** Libellés de navigation par clé de page et par langue. */
+export const routeLabels: Record<PageKey, Record<Locale, string>> = {
+  home: { fr: 'Accueil', de: 'Startseite' },
+  approach: { fr: 'Approche', de: 'Arbeitsweise' },
+  expertise: { fr: 'Expertises', de: 'Expertise' },
+  work: { fr: 'Réalisations', de: 'Projekte' },
+  career: { fr: 'Parcours', de: 'Werdegang' },
+  contact: { fr: 'Contact', de: 'Kontakt' },
+  legalNotice: { fr: 'Mentions légales', de: 'Impressum' },
+  privacy: { fr: 'Confidentialité', de: 'Datenschutz' },
+};
+
+/** Pages affichées dans la navigation principale. */
+export const mainNavKeys: PageKey[] = ['approach', 'expertise', 'work', 'career', 'contact'];
+
+/** Pages affichées dans le pied de page (informations légales). */
+export const footerNavKeys: PageKey[] = ['legalNotice', 'privacy'];
+
+/** Chemin absolu d’une page, avec préfixe de langue. */
 export function pathFor(locale: Locale, key: PageKey, childSlug?: string): string {
   const slug = routes[key][locale];
   const segments = [locale, slug, childSlug].filter((s): s is string => Boolean(s));
@@ -53,7 +71,7 @@ export function urlFor(locale: Locale, key: PageKey, childSlug?: string): string
 }
 
 /**
- * Alternates d'une page, pour l'API `metadata` de Next.js.
+ * Alternates d’une page, pour l’API `metadata` de Next.js.
  * Inclut `x-default`, qui pointe sur la langue par défaut.
  */
 export function alternatesFor(key: PageKey, childSlug?: string) {
@@ -66,14 +84,14 @@ export function alternatesFor(key: PageKey, childSlug?: string) {
 }
 
 /**
- * Chemin équivalent dans l'autre langue, pour le sélecteur `FR | DE`.
+ * Chemin équivalent dans l’autre langue, pour le sélecteur `FR | DE`.
  * Le visiteur reste sur la page équivalente.
  */
 export function switchLocalePath(target: Locale, key: PageKey, childSlug?: string): string {
   return pathFor(target, key, childSlug);
 }
 
-/** Retrouve la clé de page à partir d'un slug et d'une langue. */
+/** Retrouve la clé de page à partir d’un slug et d’une langue. */
 export function pageKeyFromSlug(locale: Locale, slug: string): PageKey | null {
   return pageKeys.find((key) => routes[key][locale] === slug) ?? null;
 }
@@ -83,12 +101,41 @@ export function pageKeyFromSlug(locale: Locale, slug: string): PageKey | null {
  *
  * Volontairement **vide** en Phase 1 : aucune réalisation ne sera déclarée
  * avant que son contenu ait été fourni et validé (Phase 3 pour le français,
- * Phase 5 pour l'allemand). Tant que cette liste est vide, toute URL de
+ * Phase 5 pour l’allemand). Tant que cette liste est vide, toute URL de
  * détail renvoie une véritable erreur 404.
  */
 export const caseStudySlugs: SlugMap[] = [];
 
-/** Retrouve une étude de cas à partir d'un slug et d'une langue. */
+/** Retrouve une étude de cas à partir d’un slug et d’une langue. */
 export function caseStudyFromSlug(locale: Locale, slug: string): SlugMap | null {
   return caseStudySlugs.find((entry) => entry[locale] === slug) ?? null;
+}
+
+/**
+ * Calcule le chemin équivalent dans une autre langue à partir du pathname
+ * courant. utilisé par le sélecteur de langue côté client.
+ */
+export function switchLocalePathFromPathname(
+  currentLocale: Locale,
+  target: Locale,
+  pathname: string
+): string {
+  const rest = pathname.replace(`/${currentLocale}`, '').replace(/^\//, '');
+  const segments = rest.split('/').filter(Boolean);
+
+  if (segments.length === 0) return pathFor(target, 'home');
+
+  const [slug, childSlug] = segments;
+  const pageKey = pageKeyFromSlug(currentLocale, slug);
+
+  if (!pageKey) return `/${target}`;
+
+  if (childSlug) {
+    const entry = caseStudyFromSlug(currentLocale, childSlug);
+    if (entry) return pathFor(target, pageKey, entry[target]);
+    // Si l’étude de cas n’est pas mappée, on retombe sur la page parente.
+    return pathFor(target, pageKey);
+  }
+
+  return pathFor(target, pageKey);
 }
