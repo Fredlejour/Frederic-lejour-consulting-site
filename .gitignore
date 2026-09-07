@@ -1,8 +1,16 @@
 node_modules/
-dist/
-.vite/
 .env
 .DS_Store
+
+# Next.js
+.next/
+out/
+*.tsbuildinfo
+.vercel
+
+# Ancien build Vite (fichiers sources conserves jusqu'a la phase de nettoyage)
+dist/
+.vite/
 
 # --- Garde-fous confidentialite (depot public) ---
 # Le dossier prive de reference est hors depot :

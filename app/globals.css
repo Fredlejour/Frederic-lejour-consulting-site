@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Phase 1 — plomberie uniquement.
+ *
+ * Aucun style de marque, aucune police, aucun composant : le design system
+ * « Autorité chaleureuse » sera construit en Phase 2.
+ */
