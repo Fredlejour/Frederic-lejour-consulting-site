@@ -3,3 +3,19 @@ dist/
 .vite/
 .env
 .DS_Store
+
+# --- Garde-fous confidentialite (depot public) ---
+# Le dossier prive de reference est hors depot :
+# C:\Users\lejou\LejourConsulting-PRIVE
+# Ces regles sont un second filet de securite, au cas ou un document
+# confidentiel serait depose par erreur dans le dossier du projet.
+-PRIVE*
+*-PRIVE*
+/prive/
+/private/
+/sources-privees/
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
