@@ -17,7 +17,7 @@ export function Footer({ locale }: { locale: Locale }) {
               <Link href={pathFor(locale, 'home')} className="font-display text-2xl text-foreground">
                 {ui(locale, 'wordmark')}
               </Link>
-              <p className="mt-4 max-w-xs text-body-sm text-muted">{ui(locale, 'demoSubtitle')}</p>
+              <p className="mt-4 max-w-xs text-body-sm text-muted">{ui(locale, 'tagline')}</p>
             </div>
 
             <div>
@@ -57,7 +57,6 @@ export function Footer({ locale }: { locale: Locale }) {
 
           <div className="mt-8 flex flex-col justify-between gap-4 md:flex-row md:items-center">
             <p className="text-body-sm text-muted">{uiWithYear(locale, 'copyright', year)}</p>
-            <p className="text-body-sm text-muted">Phase 2 — Design system</p>
           </div>
         </div>
       </Container>

@@ -10,7 +10,7 @@ export function Eyebrow({ className, children, ...props }: ComponentProps<'span'
       )}
       {...props}
     >
-      <span className="h-px w-8 bg-accent" aria-hidden="true" />
+      <span className="lc-rule h-px w-8 bg-accent" aria-hidden="true" />
       {children}
     </span>
   );

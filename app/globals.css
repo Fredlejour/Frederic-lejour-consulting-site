@@ -6,8 +6,9 @@
  * Phase 2 — design system « Autorité chaleureuse ».
  *
  * Les variables CSS ci-dessous constituent la source de vérité des jetons
- * sémantiques. Elles sont surchargées par les classes `.theme-ivory` et
- * `.theme-graphite` pour permettre les sections claires et foncées.
+ * sémantiques. Elles sont surchargées par les classes `.theme-*` pour
+ * permettre les ambiances claires et foncées, et les nouvelles sections
+ * « silk » et « pearl » qui donnent du relief à la page d’accueil.
  */
 
 :root,
@@ -31,6 +32,30 @@
   --color-accent: #B08D57;
   --color-surface: #F4EFE6;
   --color-border: rgba(17, 16, 14, 0.10);
+  --color-focus: #B08D57;
+  --color-accent-foreground: #11100E;
+}
+
+.theme-pearl {
+  --color-background: #FAF7F1;
+  --color-foreground: #11100E;
+  --color-muted: rgba(17, 16, 14, 0.70);
+  --color-accent: #B08D57;
+  --color-surface: #F4EFE6;
+  --color-border: #D4C3A9;
+  --color-focus: #B08D57;
+  --color-accent-foreground: #11100E;
+}
+
+.theme-silk {
+  --color-background: #E9E0D3;
+  --color-foreground: #11100E;
+  /* Fond légèrement plus soutenu : le `muted` est renforcé pour conserver
+     un contraste d’au moins 6:1. */
+  --color-muted: rgba(17, 16, 14, 0.74);
+  --color-accent: #B08D57;
+  --color-surface: #FAF7F1;
+  --color-border: #D4C3A9;
   --color-focus: #B08D57;
   --color-accent-foreground: #11100E;
 }
@@ -62,6 +87,8 @@
   h5,
   h6 {
     @apply font-display break-words;
+    /* Évite les veuves et les mots courts isolés en fin de ligne. */
+    text-wrap: balance;
   }
 
   ::selection {
@@ -82,6 +109,239 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
+    }
+  }
+}
+
+/*
+ * Mouvement — « énergie maîtrisée ».
+ *
+ * Tout est enfermé dans `prefers-reduced-motion: no-preference`. Si le
+ * visiteur demande une réduction des animations, aucune de ces règles ne
+ * s’applique : les contenus sont rendus dans leur état final, immédiatement.
+ *
+ * Le contenu est toujours présent dans le HTML. Les états masqués ne sont
+ * jamais posés côté serveur : `Reveal` ne les active qu’après hydratation,
+ * et uniquement sur des sections situées sous la ligne de flottaison.
+ *
+ * Seuls `opacity` et `transform` sont animés.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes lc-rise {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes lc-rise-sm {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes lc-slide-from-right {
+    from {
+      opacity: 0;
+      transform: translate3d(24px, 0, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes lc-rule {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes lc-scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* --- Entrée du hero : scénario au chargement, sans JavaScript --- */
+
+  .lc-enter {
+    animation: lc-rise-sm 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .lc-enter-1 {
+    animation-delay: 0ms;
+  }
+
+  .lc-enter-2 {
+    animation-delay: 160ms;
+  }
+
+  .lc-enter-3 {
+    animation-delay: 240ms;
+  }
+
+  .lc-enter-4 {
+    animation-delay: 320ms;
+  }
+
+  .lc-enter-portrait {
+    animation: lc-slide-from-right 680ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 400ms;
+  }
+
+  /* --- Filets or : déploiement horizontal, une seule fois --- */
+
+  .lc-rule {
+    transform-origin: left center;
+  }
+
+  .lc-enter-1 .lc-rule {
+    animation: lc-rule 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 80ms;
+  }
+
+  [data-reveal='hidden'] .lc-rule {
+    transform: scaleX(0);
+  }
+
+  [data-reveal='shown'] .lc-rule {
+    animation: lc-rule 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 140ms;
+  }
+
+  /* --- Révélation des sections au défilement --- */
+
+  [data-reveal='ready'] {
+    opacity: 1;
+    transform: none;
+  }
+
+  [data-reveal='ready'] .lc-rule {
+    animation: lc-rule 480ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 140ms;
+  }
+
+  [data-reveal='hidden'] {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+
+  [data-reveal='shown'] {
+    animation: lc-rise 620ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Variante `scale` : zoom avant très léger, sans translation. Réservée aux
+     éléments focaux (mantra) — règles placées après l’état `hidden` générique
+     pour éviter tout conflit de `transform`. */
+
+  [data-reveal='hidden'][data-variant='scale'] {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  [data-reveal='shown'][data-variant='scale'] {
+    animation: lc-scale-in 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* --- Cascade interne, déclarée par `data-stagger` --- */
+
+  @keyframes lc-rise-child {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  [data-reveal='hidden'] [data-stagger] > * {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+
+  [data-reveal='shown'] [data-stagger] > * {
+    animation: lc-rise-child 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(1) {
+    animation-delay: 120ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(2) {
+    animation-delay: 200ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(3) {
+    animation-delay: 280ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(4) {
+    animation-delay: 360ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(5) {
+    animation-delay: 440ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(6) {
+    animation-delay: 520ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(7) {
+    animation-delay: 600ms;
+  }
+
+  [data-reveal='shown'] [data-stagger] > *:nth-child(8) {
+    animation-delay: 680ms;
+  }
+
+  /* --- Micro-interactions --- */
+
+  .lc-press {
+    transition:
+      color 200ms ease,
+      background-color 200ms ease,
+      border-color 200ms ease,
+      opacity 200ms ease,
+      transform 200ms ease;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .lc-press:hover {
+      transform: translateY(-1px);
+    }
+
+    .lc-card {
+      transition:
+        border-color 220ms ease,
+        box-shadow 220ms ease,
+        transform 220ms ease;
+    }
+
+    .lc-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--color-accent);
+      box-shadow: 0 10px 32px -12px rgba(17, 16, 14, 0.18);
     }
   }
 }

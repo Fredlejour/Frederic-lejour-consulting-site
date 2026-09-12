@@ -1,12 +1,12 @@
 /**
  * Langues du site.
  *
- * Le site est intégralement bilingue : chaque page existe réellement en
- * français et en allemand, sous des URL distinctes. `x-default` pointe sur
- * le français.
+ * Chaque page existe sous une URL distincte par langue. Une page non encore
+ * publiée dans une langue affiche une page d’attente (voir `livePages` dans
+ * `lib/routes.ts`). `x-default` pointe sur le français.
  */
 
-export const locales = ['fr', 'de'] as const;
+export const locales = ['fr', 'de', 'en'] as const;
 
 export type Locale = (typeof locales)[number];
 
@@ -16,18 +16,21 @@ export const defaultLocale: Locale = 'fr';
 export const htmlLang: Record<Locale, string> = {
   fr: 'fr',
   de: 'de',
+  en: 'en',
 };
 
 /** Valeur `og:locale`. */
 export const ogLocale: Record<Locale, string> = {
   fr: 'fr_FR',
   de: 'de_DE',
+  en: 'en_US',
 };
 
 /** Libellé du sélecteur de langue. Jamais de drapeau : uniquement du texte. */
 export const localeLabel: Record<Locale, string> = {
   fr: 'FR',
   de: 'DE',
+  en: 'EN',
 };
 
 export function isLocale(value: string): value is Locale {

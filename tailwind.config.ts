@@ -47,20 +47,19 @@ const config: Config = {
         info: '#1E40AF',
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Bodoni Moda', 'Georgia', 'serif'],
+        display: ['var(--font-display)', 'Sora', 'system-ui', 'sans-serif'],
         body: ['var(--font-body)', 'Manrope', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        // Les tailles display ont été réduites d’environ 25 % par rapport à la
-        // première implémentation. Le graisse 500 renforce la lisibilité de
-        // Bodoni Moda sur les fonds clairs sans perdre l’élégance éditoriale.
-        'display-xl': ['clamp(2.5rem, 7vw, 5.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'display-lg': ['clamp(2rem, 5vw, 4rem)', { lineHeight: '1.05', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'display-md': ['clamp(1.75rem, 3.5vw, 2.75rem)', { lineHeight: '1.1', letterSpacing: '-0.01em', fontWeight: '500' }],
-        'heading-2xl': ['clamp(2rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '500' }],
-        'heading-xl': ['clamp(1.625rem, 3vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '-0.01em', fontWeight: '500' }],
-        'heading-lg': ['clamp(1.375rem, 2.25vw, 1.875rem)', { lineHeight: '1.2', fontWeight: '500' }],
-        'heading-md': ['clamp(1.125rem, 1.75vw, 1.5rem)', { lineHeight: '1.25', fontWeight: '500' }],
+        // Sora en titrage : géométrique contemporaine, graisses 600/700 pour
+        // un rendu puissant et crédible, sans l’esthétique luxe de Bodoni Moda.
+        'display-xl': ['clamp(2.5rem, 7vw, 5.5rem)', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '700' }],
+        'display-lg': ['clamp(2rem, 5.5vw, 3.9rem)', { lineHeight: '1.08', letterSpacing: '-0.03em', fontWeight: '700' }],
+        'display-md': ['clamp(2.25rem, 4vw, 3.25rem)', { lineHeight: '1.05', letterSpacing: '-0.03em', fontWeight: '700' }],
+        'heading-2xl': ['clamp(2rem, 4vw, 3rem)', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'heading-xl': ['clamp(1.625rem, 3vw, 2.25rem)', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'heading-lg': ['clamp(1.375rem, 2.25vw, 1.875rem)', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'heading-md': ['clamp(1.125rem, 1.75vw, 1.5rem)', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
         'heading-sm': ['1.0625rem', { lineHeight: '1.4', fontWeight: '500' }],
         'body-lg': ['1.125rem', { lineHeight: '1.7' }],
         'body': ['1rem', { lineHeight: '1.7' }],

@@ -218,7 +218,7 @@ Levier n°1 de l'axe « humain et contemporain ». À défaut : compositions typ
 | Principe « Comprendre les enjeux business réels » | `FOURNI` |
 | Principe « Structurer une acquisition plus qualitative » | `FOURNI` |
 | Principe « Renforcer la confiance dans la relation commerciale » | `FOURNI` |
-| Domaines d'expertise (9 puces, titres actuellement en anglais) | `À VÉRIFIER` (à reformuler en français et à compléter) |
+| Domaines d'expertise de la page `/fr/expertises` (4 domaines, 6 situations, 6 compétences) | `FOURNI` — contenu français intégré dans `content/expertise.ts` et `components/sections/ExpertisePage.tsx`. Version allemande à traduire en Phase 5. |
 | Titre de positionnement « Stratège en développement commercial et relations stratégiques » | `FOURNI` |
 
 ---

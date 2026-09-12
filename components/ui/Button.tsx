@@ -14,7 +14,7 @@ type LinkProps = BaseProps & Omit<ComponentPropsWithoutRef<typeof Link>, keyof B
 
 function buttonClasses(variant: BaseProps['variant'], size: BaseProps['size']) {
   return cn(
-    'inline-flex items-center justify-center gap-2 font-body font-medium transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground',
+    'lc-press inline-flex items-center justify-center gap-2 font-body font-medium focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground',
     size === 'lg' ? 'px-8 py-3.5 text-base' : 'px-6 py-3 text-sm',
     variant === 'primary' && 'rounded bg-accent text-accent-foreground hover:bg-accent/90',
     variant === 'secondary' && 'rounded border border-foreground text-foreground hover:bg-foreground hover:text-background',

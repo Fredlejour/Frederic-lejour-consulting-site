@@ -27,35 +27,61 @@ export type PageKey =
 type SlugMap = Record<Locale, string>;
 
 export const routes: Record<PageKey, SlugMap> = {
-  home: { fr: '', de: '' },
-  approach: { fr: 'approche', de: 'arbeitsweise' },
-  expertise: { fr: 'expertises', de: 'expertise' },
-  work: { fr: 'realisations', de: 'projekte' },
-  career: { fr: 'parcours', de: 'werdegang' },
-  contact: { fr: 'contact', de: 'kontakt' },
-  legalNotice: { fr: 'mentions-legales', de: 'impressum' },
-  privacy: { fr: 'politique-confidentialite', de: 'datenschutz' },
+  home: { fr: '', de: '', en: '' },
+  approach: { fr: 'approche', de: 'arbeitsweise', en: 'approach' },
+  expertise: { fr: 'expertises', de: 'expertise', en: 'expertise' },
+  work: { fr: 'realisations', de: 'projekte', en: 'projects' },
+  career: { fr: 'parcours', de: 'werdegang', en: 'career' },
+  contact: { fr: 'contact', de: 'kontakt', en: 'contact' },
+  legalNotice: { fr: 'mentions-legales', de: 'impressum', en: 'legal-notice' },
+  privacy: { fr: 'confidentialite', de: 'datenschutz', en: 'privacy' },
 };
 
 export const pageKeys = Object.keys(routes) as PageKey[];
 
 /** Libellés de navigation par clé de page et par langue. */
 export const routeLabels: Record<PageKey, Record<Locale, string>> = {
-  home: { fr: 'Accueil', de: 'Startseite' },
-  approach: { fr: 'Approche', de: 'Arbeitsweise' },
-  expertise: { fr: 'Expertises', de: 'Expertise' },
-  work: { fr: 'Réalisations', de: 'Projekte' },
-  career: { fr: 'Parcours', de: 'Werdegang' },
-  contact: { fr: 'Contact', de: 'Kontakt' },
-  legalNotice: { fr: 'Mentions légales', de: 'Impressum' },
-  privacy: { fr: 'Confidentialité', de: 'Datenschutz' },
+  home: { fr: 'Accueil', de: 'Startseite', en: 'Home' },
+  approach: { fr: 'Approche', de: 'Arbeitsweise', en: 'Approach' },
+  expertise: { fr: 'Expertises', de: 'Expertise', en: 'Expertise' },
+  work: { fr: 'Réalisations', de: 'Projekte', en: 'Projects' },
+  career: { fr: 'Parcours', de: 'Werdegang', en: 'Career' },
+  contact: { fr: 'Contact', de: 'Kontakt', en: 'Contact' },
+  legalNotice: { fr: 'Mentions légales', de: 'Impressum', en: 'Legal notice' },
+  privacy: { fr: 'Confidentialité', de: 'Datenschutz', en: 'Privacy policy' },
 };
 
 /** Pages affichées dans la navigation principale. */
-export const mainNavKeys: PageKey[] = ['approach', 'expertise', 'work', 'career', 'contact'];
+export const mainNavKeys: PageKey[] = [
+  'home',
+  'approach',
+  'expertise',
+  'work',
+  'career',
+  'contact',
+];
 
 /** Pages affichées dans le pied de page (informations légales). */
 export const footerNavKeys: PageKey[] = ['legalNotice', 'privacy'];
+
+/**
+ * Pages réellement publiées, par langue — source de vérité de disponibilité.
+ *
+ * Toute route non listée affiche une page d’attente (`PendingPage`), est
+ * exclue du sitemap et n’est pas déclarée dans les alternates `hreflang`.
+ * Activer une page revient à l’ajouter ici une fois son contenu validé,
+ * sans supprimer les contenus de travail.
+ */
+export const livePages: Record<Locale, PageKey[]> = {
+  fr: pageKeys,
+  de: ['home', 'legalNotice', 'privacy'],
+  en: ['legalNotice', 'privacy'],
+};
+
+/** Indique si une page est réellement publiée dans une langue. */
+export function isPageLive(locale: Locale, key: PageKey): boolean {
+  return livePages[locale].includes(key);
+}
 
 /** Chemin absolu d’une page, avec préfixe de langue. */
 export function pathFor(locale: Locale, key: PageKey, childSlug?: string): string {
@@ -73,10 +99,14 @@ export function urlFor(locale: Locale, key: PageKey, childSlug?: string): string
 /**
  * Alternates d’une page, pour l’API `metadata` de Next.js.
  * Inclut `x-default`, qui pointe sur la langue par défaut.
+ *
+ * Seules les versions réellement publiées (`livePages`) sont déclarées :
+ * une page d’attente n’est jamais présentée comme une traduction complète.
  */
 export function alternatesFor(key: PageKey, childSlug?: string) {
   const languages: Record<string, string> = {};
   for (const locale of locales) {
+    if (!isPageLive(locale, key)) continue;
     languages[locale] = urlFor(locale, key, childSlug);
   }
   languages['x-default'] = urlFor(defaultLocale, key, childSlug);

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import type { Locale } from '@/lib/i18n';
 import { localeLabel, locales } from '@/lib/i18n';
 import { switchLocalePathFromPathname } from '@/lib/routes';
+import { ui } from '@/lib/ui';
 import { cn } from '@/lib/utils';
 
 type Props = {
@@ -15,7 +16,7 @@ export function LanguageSwitcher({ locale }: Props) {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center gap-2 text-sm font-medium tracking-wide" aria-label={`Langue: ${locale.toUpperCase()}`}>
+    <div className="flex items-center gap-2 text-sm font-medium tracking-wide" aria-label={`${ui(locale, 'languageSwitch')}: ${locale.toUpperCase()}`}>
       {locales.map((target, index) => {
         const isCurrent = target === locale;
         const href = switchLocalePathFromPathname(locale, target, pathname);

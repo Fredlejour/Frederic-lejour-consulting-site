@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import type { ComponentProps, ReactNode } from 'react';
 
 type Props = {
-  variant?: 'default' | 'muted' | 'outline';
+  variant?: 'default' | 'muted' | 'outline' | 'elevated';
   children: ReactNode;
 } & Omit<ComponentProps<'div'>, 'children'>;
 
@@ -11,6 +11,7 @@ export function Card({ variant = 'default', className, children, ...props }: Pro
     default: 'bg-surface shadow-soft',
     muted: 'bg-foreground/5',
     outline: 'border border-border bg-transparent',
+    elevated: 'bg-surface border border-border shadow-soft',
   };
 
   return (

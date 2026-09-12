@@ -1,11 +1,19 @@
-import { Bodoni_Moda, Manrope } from 'next/font/google';
+import { Manrope, Sora } from 'next/font/google';
 
-export const fontDisplay = Bodoni_Moda({
+/**
+ * Système typographique — direction A.
+ *
+ * Sora en titrage : géométrique contemporaine, plage 100–800, adaptée aux
+ * environnements Tech/SaaS et au positionnement performance.
+ *
+ * Manrope en texte courant et interface : humaniste à hauteur d'x généreuse,
+ * chaleureuse et lisible à toutes les tailles.
+ */
+export const fontDisplay = Sora({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
   weight: 'variable',
-  axes: ['opsz'],
   adjustFontFallback: false,
 });
 
