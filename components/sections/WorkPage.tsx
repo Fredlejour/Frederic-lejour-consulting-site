@@ -25,7 +25,7 @@ type PageProps = {
 };
 
 /**
- * Page Réalisations (/fr/realisations).
+ * Page Réalisations (/fr/realisations ↔ /de/projekte).
  *
  * Trois sections : Hero, six réalisations détaillées, CTA final.
  * Chaque réalisation juxtapose un récit éditorial et un panneau de preuve.
@@ -35,7 +35,7 @@ export function WorkPage({ content }: PageProps) {
     <>
       <WorkHero content={content.hero} />
       {content.items.map((item, index) => (
-        <WorkItem key={item.step} item={item} index={index} />
+        <WorkItem key={item.step} item={item} index={index} labels={content.labels} />
       ))}
       <WorkCta content={content.cta} />
     </>
@@ -113,7 +113,15 @@ const statsGridClass: Record<number, string> = {
   5: 'grid-cols-1 xs:grid-cols-2 sm:grid-cols-3',
 };
 
-function WorkItem({ item, index }: { item: WorkCase; index: number }) {
+function WorkItem({
+  item,
+  index,
+  labels,
+}: {
+  item: WorkCase;
+  index: number;
+  labels: WorkContent['labels'];
+}) {
   const variant = sectionVariants[index % sectionVariants.length];
 
   return (
@@ -145,7 +153,7 @@ function WorkItem({ item, index }: { item: WorkCase; index: number }) {
               <div className="flex items-center gap-2 text-accent">
                 <Gem className="h-4 w-4" strokeWidth={1.5} />
                 <span className="text-caption font-semibold uppercase tracking-wider">
-                  Valeur créée
+                  {labels.valueCreated}
                 </span>
               </div>
               <p className="mt-2 max-w-4xl font-display text-heading-md text-craie md:mt-3 md:text-heading-lg">
@@ -163,13 +171,13 @@ function WorkItem({ item, index }: { item: WorkCase; index: number }) {
 
           {/* 5. Résultats */}
           <div className="lg:col-span-5">
-            <WorkResults item={item} />
+            <WorkResults item={item} labels={labels} />
           </div>
 
           {/* 6. Compétences démontrées sur toute la largeur */}
           <div className="border-t border-border pt-8 lg:col-span-12">
             <p className="text-caption font-medium uppercase tracking-wider text-muted">
-              Expertises démontrées
+              {labels.demonstrated}
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               {item.demonstrated.map((skill) => (
@@ -188,14 +196,20 @@ function WorkItem({ item, index }: { item: WorkCase; index: number }) {
   );
 }
 
-function WorkResults({ item }: { item: WorkCase }) {
+function WorkResults({
+  item,
+  labels,
+}: {
+  item: WorkCase;
+  labels: WorkContent['labels'];
+}) {
   const statsGrid = statsGridClass[item.stats.length] ?? 'grid-cols-1 xs:grid-cols-2';
 
   return (
     <div>
       <div className="flex items-center gap-3 text-muted">
         <span className="lc-rule h-px w-6 bg-accent" aria-hidden="true" />
-        <span className="text-caption font-medium uppercase tracking-wider">Résultats</span>
+        <span className="text-caption font-medium uppercase tracking-wider">{labels.results}</span>
       </div>
 
       {item.stats.length > 0 ? (

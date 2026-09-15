@@ -45,6 +45,8 @@ export type CareerContent = {
     title: string;
     /** Phrase manifeste en deux lignes ; `highlight` est rendu en accent. */
     manifesto: { lines: [string, string]; highlight?: string };
+    /** Libellé placé au-dessus de la liste « retenu » de chaque chapitre. */
+    retainedLabel: string;
     items: CareerChapter[];
   };
   combinations: {
@@ -52,6 +54,8 @@ export type CareerContent = {
     title: string;
     /** Sous-titre en deux phrases distinctes ; `emphasis` est renforcée. */
     intro: { first: string; emphasis: string };
+    /** En-têtes de colonnes, visibles uniquement quand les colonnes existent. */
+    headers: { inputs: string; outcome: string };
     items: CareerCombination[];
   };
   landmarks: {
@@ -140,6 +144,7 @@ export const careerFr: CareerContent = {
       lines: ['Créer les conditions', 'd’une décision.'],
       highlight: 'décision.',
     },
+    retainedLabel: 'Ce que j’en ai retenu',
     items: [
       {
         step: '01',
@@ -203,6 +208,7 @@ export const careerFr: CareerContent = {
       first: 'Ces compétences ne se sont pas simplement succédé.',
       emphasis: 'Elles se sont progressivement combinées.',
     },
+    headers: { inputs: 'Expériences mobilisées', outcome: 'Capacité construite' },
     items: [
       {
         inputs: ['Vente', 'Management'],
@@ -311,5 +317,237 @@ export const careerFr: CareerContent = {
   cta: {
     title: 'Une trajectoire prend tout son sens lorsqu’elle prépare la prochaine étape.',
     primaryCta: 'Échanger avec Frédéric',
+  },
+};
+
+/**
+ * Contenu allemand de la page Werdegang (/de/werdegang).
+ *
+ * Traduction professionnelle validée des textes français ci-dessus.
+ * Aucune date, aucun employeur et aucun diplôme n’y figure : la frise de
+ * référence (content/CHRONOLOGIE.md) n’est pas encore renseignée.
+ */
+export const careerDe: CareerContent = {
+  meta: {
+    title: 'Werdegang — Frédéric Lejour',
+    description:
+      'Telekommunikation, Vermögensberatung, Immobilien und Beratung zwischen Frankreich und Deutschland: Frédéric Lejours Werdegang im Dienste von Geschäftsentwicklung und strategischen Beziehungen.',
+  },
+
+  hero: {
+    eyebrow: 'WERDEGANG',
+    title: [
+      'Die Praxis als Schule',
+      'Beziehungen als Methode',
+      'Mehrwert als Ergebnis',
+    ],
+    intro: [
+      'Von der Telekommunikation über die Vermögensberatung und die Immobilienwirtschaft bis hin zum Unternehmertum: Mein Werdegang führte mich durch unterschiedliche Bereiche, drehte sich jedoch immer um dieselbe Frage: Wie lässt sich eine Situation so gut verstehen, dass eine Entscheidung vorankommt?',
+    ],
+  },
+
+  thread: {
+    eyebrow: 'DER ROTE FADEN',
+    title: 'Drei Verben, eine gemeinsame Logik',
+    intro: 'Unabhängig vom jeweiligen Umfeld bleibt die Vorgehensweise dieselbe.',
+    verbs: [
+      {
+        word: 'Verstehen',
+        explanation:
+          'Zuhören, den Markt analysieren und die tatsächlichen Beweggründe erkennen.',
+      },
+      {
+        word: 'Gestalten',
+        explanation:
+          'Ein Angebot, eine Beziehung oder ein Vertriebssystem strukturieren.',
+      },
+      {
+        word: 'Entwickeln',
+        explanation:
+          'Potenzial in Kunden, Partnerschaften und konkrete Ergebnisse verwandeln.',
+      },
+    ],
+  },
+
+  chapters: {
+    eyebrow: 'DER WEG',
+    title: 'Vier Bereiche, eine gemeinsame Fähigkeit',
+    manifesto: {
+      lines: ['Die Voraussetzungen schaffen', 'für eine Entscheidung.'],
+      highlight: 'Entscheidung.',
+    },
+    retainedLabel: 'Was ich daraus mitgenommen habe',
+    items: [
+      {
+        step: '01',
+        environment: 'Telekommunikation',
+        title: 'Vertriebsperformance steuern',
+        narrative: [
+          'In der Telekommunikationsbranche entwickelte ich eine ausgeprägte Vertriebs-, Verhandlungs- und Steuerungskultur in einem strukturierten, konsequent ergebnisorientierten Umfeld. Dort übernahm ich Verantwortung in der Vertriebsleitung und führte zehn Mitarbeitende, verteilt auf zwei Teams.',
+        ],
+        retained: [
+          'Eine Kultur messbarer Ergebnisse',
+          'Konsequente Vertriebsprozesse',
+          'Führung von Teams',
+        ],
+      },
+      {
+        step: '02',
+        environment: 'Vermögensberatung',
+        title: 'Entscheidungen begleiten, die langfristige Auswirkungen haben',
+        narrative: [
+          'In der Vermögensberatung wirkte sich jede Entscheidung auf die Vorhaben, das finanzielle Gleichgewicht und die Zukunft meiner Kunden aus. Diese Erfahrung hat mich gelehrt, Analyse, Zuhören und verständliche Vermittlung miteinander zu verbinden, um komplexe Entscheidungen nachvollziehbar zu machen und langfristiges Vertrauen aufzubauen.',
+        ],
+        retained: [
+          'Aufmerksames Zuhören in komplexen Situationen',
+          'Vertrauen als Voraussetzung für Entscheidungen',
+          'Hohe analytische Ansprüche',
+        ],
+      },
+      {
+        step: '03',
+        environment: 'Immobilien und Unternehmertum',
+        title: 'Unternehmerisch handeln und neue Angebote entwickeln',
+        narrative: [
+          'Als Immobilieninvestor und später als Leiter zweier Immobilienagenturen habe ich umfassende Erfahrung mit Immobilientransaktionen gesammelt. Darüber hinaus entwickelte ich Angebote für Immobilieneigentümer, insbesondere VRP31J und Premium Vendeur, sowie ein digitales System zur Kundengewinnung.',
+        ],
+        retained: [
+          'Die Praxis als Quelle kontinuierlichen Lernens',
+          'Die Entwicklung vermarktbarer Angebote',
+          'Der Aufbau einer Geschäftstätigkeit von Anfang bis Ende',
+        ],
+      },
+      {
+        step: '04',
+        environment: 'Beratung, Digitalisierung und internationales Geschäft',
+        title: 'Geschäftsentwicklung über räumliche Grenzen hinweg',
+        narrative: [
+          'Mit Lejour Consulting habe ich von Deutschland aus eine Geschäftstätigkeit entwickelt, die sich hauptsächlich an den französischen Markt richtete: Präsentation der Angebote, Vertragsabschluss und Betreuung aus der Ferne, gezielte Termine vor Ort sowie der Einsatz digitaler Werkzeuge und von Automatisierung zur Stärkung der Kundenbeziehungen.',
+        ],
+        retained: [
+          'Vertrauen ohne geografische Nähe schaffen',
+          'Geschäftsentwicklung aus der Ferne, ohne die Beziehung zu schwächen',
+          'Technologie in den Dienst des Menschen stellen',
+        ],
+      },
+    ],
+  },
+
+  combinations: {
+    eyebrow: 'ENTWICKLUNG',
+    title: 'Was diese Erfahrungen hervorgebracht haben.',
+    intro: {
+      first: 'Diese Kompetenzen folgten nicht einfach nur aufeinander.',
+      emphasis: 'Sie haben sich schrittweise miteinander verbunden.',
+    },
+    headers: { inputs: 'Eingebrachte Erfahrungen', outcome: 'Entwickelte Fähigkeit' },
+    items: [
+      {
+        inputs: ['Vertrieb', 'Führung'],
+        outcome: 'Geschäftsentwicklung steuern',
+        description:
+          'Den direkten Vertrieb um Organisation, Führung und eine strukturierte Akquisestrategie erweitern.',
+      },
+      {
+        inputs: ['Analyse', 'Zuhören'],
+        outcome: 'Entscheidungen begleiten',
+        description:
+          'Das Verständnis einer Situation mit dem Verständnis der Beweggründe verbinden, um eine komplexe Entscheidung voranzubringen.',
+      },
+      {
+        inputs: ['Praxis', 'Unternehmertum'],
+        outcome: 'Fachwissen vermarkten',
+        description:
+          'Praxiserfahrung in ein strukturiertes, differenziertes und marktfähiges Nutzenversprechen verwandeln.',
+      },
+      {
+        inputs: ['Digitalisierung', 'Künstliche Intelligenz'],
+        outcome: 'Ein technologiegestütztes Vertriebssystem aufbauen',
+        description:
+          'Kundengewinnung, Kommunikation, Automatisierung und persönliche Beziehungen zu einem schlüssigen Gesamtsystem verbinden.',
+      },
+    ],
+  },
+
+  landmarks: {
+    eyebrow: 'DER WERDEGANG IN ZAHLEN',
+    title: 'Eine Erfahrung, die über viele Jahre und durch konkretes Handeln gewachsen ist.',
+    items: [
+      { figure: '20+', label: 'Jahre Vertriebserfahrung' },
+      { figure: '150+', label: 'Immobilientransaktionen' },
+      { figure: '50 Mio. €+', label: 'Immobilienvolumen' },
+      {
+        figure: 'Frankreich · Deutschland',
+        label:
+          'Durch eigene Lebenserfahrung mit den kulturellen Gepflogenheiten, dem Alltag und den Rahmenbedingungen beider Länder vertraut.',
+      },
+    ],
+  },
+
+  positioning: {
+    title: 'Vielfältige Erfahrung im Dienste des Wachstums.',
+    text: 'Heute verbinde ich meine Erfahrung aus der Praxis, der Beratung, der Verhandlung und dem Unternehmertum, um zu Herausforderungen in den Bereichen Business Development, Account Management, strategische Beziehungen und Customer Growth beizutragen.',
+    personas: {
+      eyebrow: 'UNTERNEHMEN UND MÄRKTE',
+      title: 'Wo dieses Profil den Unterschied machen kann.',
+      intro:
+        'Diese Erfahrung entfaltet ihren besonderen Wert in Unternehmen, die ein Angebot verständlicher machen, strategische Beziehungen ausbauen oder Geschäftspotenzial in konkretes Wachstum verwandeln möchten.',
+      contributionLabel: 'DIESES PROFIL BRINGT EIN',
+      items: [
+        {
+          market: 'PROPTECH UND IMMOBILIENÖKOSYSTEM',
+          situation:
+            'Eine PropTech, ein Netzwerk oder ein Immobiliendienstleister, der die Nutzung seiner Lösung durch Makler, Agenturen und Partner beschleunigen möchte.',
+          contribution:
+            'Die Praxis verstehen, das Nutzenversprechen strukturieren und ein professionelles Netzwerk aktivieren.',
+        },
+        {
+          market: 'SAAS B2B, KÜNSTLICHE INTELLIGENZ UND AUTOMATISIERUNG',
+          situation:
+            'Ein Anbieter mit einer leistungsfähigen Technologie, dessen Angebot noch verständlicher, attraktiver und besser vermarktbar werden muss.',
+          contribution:
+            'Technologie in konkrete Vorteile übersetzen und komplexe Entscheidungen begleiten.',
+        },
+        {
+          market: 'STRATEGISCHE KUNDEN UND PARTNERSCHAFTEN',
+          situation:
+            'Ein Unternehmen mit Kunden, strategischen Accounts oder Partnern, deren Entwicklungspotenzial noch nicht vollständig ausgeschöpft ist.',
+          contribution:
+            'Beziehungen vertiefen, neue Geschäftsmöglichkeiten erkennen und langfristiges Wachstum aufbauen.',
+        },
+        {
+          market: 'GESCHÄFTSBEZIEHUNGEN ZWISCHEN FRANKREICH UND DEUTSCHLAND',
+          situation:
+            'Ein zwischen Frankreich und Deutschland tätiges Unternehmen, das seine Kommunikation und seine Beziehungen an die kulturellen Gepflogenheiten und Erwartungen auf beiden Seiten anpassen muss.',
+          contribution:
+            'Das gegenseitige Verständnis erleichtern und die Entwicklung der Beziehungen absichern.',
+        },
+      ],
+    },
+    relatedLabel: 'ZUR VERTIEFUNG',
+    related: [
+      {
+        pageKey: 'approach',
+        label: 'Arbeitsweise',
+        description: 'Wie ich beobachte, lerne und konkrete Maßnahmen entwickle.',
+      },
+      {
+        pageKey: 'expertise',
+        label: 'Expertise',
+        description:
+          'Die vertrieblichen, zwischenmenschlichen und technologischen Hebel, die ich einsetze.',
+      },
+      {
+        pageKey: 'work',
+        label: 'Projekte',
+        description:
+          'Konkrete Situationen, in denen diese Erfahrung Mehrwert geschaffen hat.',
+      },
+    ],
+  },
+
+  cta: {
+    title: 'Ein Werdegang gewinnt seinen vollen Sinn, wenn er auf den nächsten Schritt vorbereitet.',
+    primaryCta: 'Mit Frédéric ins Gespräch kommen',
   },
 };

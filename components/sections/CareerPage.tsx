@@ -165,7 +165,7 @@ function CareerChapters({ content }: { content: CareerContent['chapters'] }) {
 
             <div className="border-l-2 border-accent pl-5 md:col-span-4 lg:border-l lg:border-border lg:pl-8">
               <p className="text-caption font-medium uppercase tracking-wider text-accent">
-                Ce que j’en ai retenu
+                {content.retainedLabel}
               </p>
               <ul className="mt-4 space-y-2.5">
                 {chapter.retained.map((item) => (
@@ -207,10 +207,10 @@ function CareerCombinations({ content }: { content: CareerContent['combinations'
         <div className="hidden md:grid md:grid-cols-12 md:gap-6" aria-hidden="true">
           <div className="md:col-span-1" />
           <p className="text-caption font-medium uppercase tracking-widest text-muted md:col-span-5">
-            Expériences mobilisées
+            {content.headers.inputs}
           </p>
           <p className="text-caption font-medium uppercase tracking-widest text-muted md:col-span-6">
-            Capacité construite
+            {content.headers.outcome}
           </p>
         </div>
 

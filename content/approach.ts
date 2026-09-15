@@ -10,11 +10,14 @@ export type ApproachArea = {
   title: string;
   description: string;
   icon?: string;
+  /** Étiquette de phase affichée juste avant cette étape (frise d’exécution). */
+  phase?: string;
 };
 
 export type ApproachVerb = {
   word: string;
   explanation: string;
+  icon: string;
 };
 
 export type ApproachLimit = {
@@ -58,8 +61,14 @@ export type ApproachContent = {
     eyebrow: string;
     /** Deux lignes de titre, à rendre l’une sous l’autre. */
     title: [string, string];
+    /** Citation complète : guillemets typographiques (« » / „ “) inclus dans le texte. */
     quote: string;
     paragraphs: string[];
+    /** Légendes des deux colonnes : titre en accent, sous-titre muté. */
+    labels: {
+      human: { title: string; subtitle: string };
+      tech: { title: string; subtitle: string };
+    };
     fundamentals: { word: string; icon: string }[];
     levers: ApproachArea[];
   };
@@ -81,8 +90,8 @@ export type ApproachContent = {
  * Contenu de la page Approche (/fr/approche).
  *
  * Chaque élément factuel ici a été fourni et validé. L’adaptation allemande
- * fera l’objet d’une traduction professionnelle séparée et sera publiée en
- * même temps que la version française.
+ * (`approachDe`) reprend la même structure : un champ manquant provoque une
+ * erreur de compilation.
  */
 export const approachFr: ApproachContent = {
   meta: {
@@ -125,18 +134,22 @@ export const approachFr: ApproachContent = {
       {
         word: 'Observer',
         explanation: 'Observer pour comprendre la réalité.',
+        icon: 'Eye',
       },
       {
         word: 'Apprendre',
         explanation: 'Apprendre de chaque interaction et de chaque résultat.',
+        icon: 'BookOpen',
       },
       {
         word: 'Adapter',
         explanation: 'Adapter la stratégie lorsque cela devient nécessaire.',
+        icon: 'SlidersHorizontal',
       },
       {
         word: 'Développer',
         explanation: 'Développer ce qui crée durablement de la valeur.',
+        icon: 'ArrowUpRight',
       },
     ],
   },
@@ -186,6 +199,7 @@ export const approachFr: ApproachContent = {
         title: 'Diagnostic',
         description:
           'Comprendre la situation, identifier les obstacles et révéler les opportunités.',
+        phase: 'Concevoir',
       },
       {
         title: 'Stratégie',
@@ -206,6 +220,7 @@ export const approachFr: ApproachContent = {
         title: 'Mise en œuvre',
         description:
           'Accompagner le passage de la stratégie à l’action et contribuer à sa réalisation.',
+        phase: 'Exécuter et améliorer',
       },
       {
         title: 'Analyse et ajustements',
@@ -222,7 +237,11 @@ export const approachFr: ApproachContent = {
       'La technologie comme levier.',
     ],
     quote:
-      'La technologie accélère une bonne stratégie. Elle ne remplace ni l’écoute, ni l’analyse, ni la relation.',
+      '« La technologie accélère une bonne stratégie. Elle ne remplace ni l’écoute, ni l’analyse, ni la relation. »',
+    labels: {
+      human: { title: 'L’HUMAIN', subtitle: 'Point de départ' },
+      tech: { title: 'LA TECHNOLOGIE', subtitle: 'Levier' },
+    },
     paragraphs: [
       'La performance commerciale reste profondément humaine. Comprendre les motivations, interpréter les signaux, créer la confiance et prendre les bonnes décisions exigent une qualité d’attention qu’aucun outil ne peut remplacer.',
       'Utilisées avec discernement, les technologies permettent cependant d’aller plus vite, de mieux structurer l’information et de concentrer l’énergie sur les actions qui créent réellement de la valeur.',
@@ -301,5 +320,239 @@ export const approachFr: ApproachContent = {
       'Si vous souhaitez clarifier votre positionnement, structurer votre développement commercial ou renforcer la valeur créée dans vos relations clients, commençons par en parler.',
     ],
     cta: 'Échanger sur vos enjeux',
+  },
+};
+
+/**
+ * Contenu de la page Arbeitsweise (/de/arbeitsweise).
+ * Textes fournis et validés par Frédéric Lejour.
+ */
+export const approachDe: ApproachContent = {
+  meta: {
+    title: 'Arbeitsweise — Frédéric Lejour',
+    description:
+      'Erst verstehen, dann Lösungen anbieten. Erst Mehrwert schaffen, dann überzeugen: Geschäftsentwicklung auf Basis von Zuhören, klaren Strukturen und Vertrauen.',
+  },
+
+  hero: {
+    eyebrow: 'Arbeitsweise',
+    title: [
+      'Erst verstehen, dann Lösungen anbieten',
+      'Erst Mehrwert schaffen, dann überzeugen',
+    ],
+    intro: [
+      'Erfolgreicher Vertrieb beginnt nicht mit Verkaufsargumenten, sondern mit einem klaren Verständnis der Herausforderungen, Erwartungen und Hindernisse, die eine Entscheidung beeinflussen.',
+      'Meine Arbeitsweise besteht darin, dieses Verständnis in ein klares Nutzenversprechen, eine gezieltere Kundengewinnung und eine vertrauensvolle Beziehung zu übersetzen, die langfristiges Wachstum trägt.',
+    ],
+  },
+
+  reality: {
+    eyebrow: 'ERFAHRUNG',
+    title: 'Eine Arbeitsweise, die in der Praxis gewachsen ist',
+    paragraphs: [
+      'Diese Arbeitsweise ist nicht aus einem theoretischen Modell entstanden. Sie hat sich über mehr als zwanzig Jahre im Austausch mit Kunden, Teams und Unternehmen sowie in Märkten entwickelt, die vor ganz unterschiedlichen Herausforderungen standen.',
+      'Vertriebsleitung, Geschäftsentwicklung, Verkauf, Verhandlung, Unternehmertum, Beratung, Weiterbildung, Recruiting, Immobilien und B2B-Projekte waren dabei vielfältige Felder zum Beobachten, Erproben und Lernen.',
+      'Diese Vielfalt hat mich gelehrt, eine Annahme niemals mit einer Gewissheit zu verwechseln. Eine Strategie wird erst dann wirklich nützlich, wenn sie Ergebnisse erzielt, sich am Markt bewährt und sich anhand der gewonnenen Erkenntnisse weiterentwickeln lässt.',
+    ],
+  },
+
+  conviction: {
+    eyebrow: 'ÜBERZEUGUNG',
+    title: 'Was mich diese Erfahrung gelehrt hat',
+    paragraphs: [
+      'Ein Angebot ist nicht allein deshalb erfolgreich, weil es gut ist. Es muss einen tatsächlichen Bedarf decken, seinen Mehrwert klar vermitteln und dem Kunden überzeugende Gründe geben, sich dafür zu entscheiden.',
+      'Die Erfahrung hat mich gelehrt, dass keine Strategie unverändert bleiben kann. Erwartungen verändern sich, Märkte reagieren und Ergebnisse machen mitunter sichtbar, was sich aus den ersten Annahmen noch nicht absehen ließ.',
+      'Deshalb beruht meine Arbeitsweise auf vier Schritten, die sich gegenseitig ergänzen:',
+    ],
+    verbs: [
+      {
+        word: 'Beobachten',
+        explanation: 'Beobachten, um die tatsächliche Situation zu verstehen.',
+        icon: 'Eye',
+      },
+      {
+        word: 'Lernen',
+        explanation: 'Aus jedem Austausch und jedem Ergebnis lernen.',
+        icon: 'BookOpen',
+      },
+      {
+        word: 'Anpassen',
+        explanation: 'Die Strategie anpassen, wenn es notwendig wird.',
+        icon: 'SlidersHorizontal',
+      },
+      {
+        word: 'Weiterentwickeln',
+        explanation: 'Weiterentwickeln, was langfristig Mehrwert schafft.',
+        icon: 'ArrowUpRight',
+      },
+    ],
+  },
+
+  steps: {
+    eyebrow: 'METHODE',
+    title: 'Vier Schritte zu wirksamer Geschäftsentwicklung',
+    intro:
+      'Jedes Projekt beginnt mit einer sorgfältigen Analyse der Situation. Es geht nicht darum, eine vorgefertigte Methode anzuwenden, sondern eine Lösung zu entwickeln, die zu den Herausforderungen, zum Markt und zu den beteiligten Menschen passt.',
+    items: [
+      {
+        step: '01',
+        title: 'Die tatsächlichen Herausforderungen verstehen',
+        description:
+          'Zuhören, bevor man antwortet. Die Situation, Ziele, Rahmenbedingungen und Kriterien analysieren, die die Entscheidung tatsächlich beeinflussen.',
+      },
+      {
+        step: '02',
+        title: 'Ausreichend Mehrwert schaffen',
+        description:
+          'Den Nutzen des Angebots klar herausarbeiten, seine Unterscheidungsmerkmale stärken und seinen Mehrwert mit den wichtigsten Erwartungen des Kunden verbinden.',
+      },
+      {
+        step: '03',
+        title: 'Kundengewinnung mit Fokus auf Qualität strukturieren',
+        description:
+          'Die passenden Zielkunden identifizieren, relevante Botschaften entwickeln und einen schlüssigen Vertriebsprozess gestalten, ohne Aktivität mit Wirksamkeit zu verwechseln.',
+      },
+      {
+        step: '04',
+        title: 'Vertrauen stärken',
+        description:
+          'Eine Beziehung aufbauen, die auf Transparenz, relevanten Gesprächen und der Einhaltung von Zusagen beruht. Vertrauen erleichtert Entscheidungen und schafft die Grundlage für eine langfristige Zusammenarbeit.',
+      },
+    ],
+  },
+
+  execution: {
+    eyebrow: 'ENGAGEMENT',
+    title: 'Entwickeln und umsetzen',
+    intro: [
+      'Eine Empfehlung schafft erst dann Mehrwert, wenn sie verständlich ist, umgesetzt werden kann und sich in der Praxis überprüfen lässt.',
+      'Ich verbinde strategisches Denken mit der Umsetzung, um Entscheidungen in konkrete Maßnahmen zu übersetzen, ihre Wirkung zu messen und dort schrittweise nachzubessern, wo es erforderlich ist.',
+    ],
+    areas: [
+      {
+        title: 'Situationsanalyse',
+        description:
+          'Die Situation verstehen, Hindernisse erkennen und Chancen sichtbar machen.',
+        phase: 'Konzeption',
+      },
+      {
+        title: 'Strategie',
+        description:
+          'Prioritäten setzen, grundlegende Entscheidungen treffen und die Richtung festlegen.',
+      },
+      {
+        title: 'Positionierung und Botschaften',
+        description:
+          'Den Mehrwert des Angebots klar vermitteln und Botschaften entwickeln, die zu den angesprochenen Zielgruppen passen.',
+      },
+      {
+        title: 'Vertriebsprozess',
+        description:
+          'Die Schritte, Verantwortlichkeiten, Werkzeuge und Kennzahlen strukturieren, die für die Geschäftsentwicklung erforderlich sind.',
+      },
+      {
+        title: 'Umsetzung',
+        description:
+          'Den Übergang von der Strategie zum Handeln begleiten und aktiv zur Umsetzung beitragen.',
+        phase: 'Umsetzung und Verbesserung',
+      },
+      {
+        title: 'Auswertung und Anpassung',
+        description:
+          'Ergebnisse beobachten, relevante Erkenntnisse gewinnen und Maßnahmen weiterentwickeln, wenn die Situation es erfordert.',
+      },
+    ],
+  },
+
+  technology: {
+    eyebrow: 'TECHNOLOGIE',
+    title: [
+      'Der Mensch als Ausgangspunkt.',
+      'Technologie als Hebel.',
+    ],
+    quote:
+      '„Technologie beschleunigt eine gute Strategie. Sie ersetzt weder das Zuhören noch die Analyse oder die Beziehung.“',
+    paragraphs: [
+      'Erfolgreicher Vertrieb bleibt im Kern menschlich. Beweggründe verstehen, Signale einordnen, Vertrauen schaffen und gute Entscheidungen treffen: All das verlangt eine Aufmerksamkeit, die kein Werkzeug ersetzen kann.',
+      'Mit Augenmaß eingesetzt, helfen Technologien jedoch dabei, schneller voranzukommen, Informationen besser zu strukturieren und die Energie auf Maßnahmen zu konzentrieren, die tatsächlich Mehrwert schaffen.',
+    ],
+    labels: {
+      human: { title: 'DER MENSCH', subtitle: 'Ausgangspunkt' },
+      tech: { title: 'TECHNOLOGIE', subtitle: 'Hebel' },
+    },
+    fundamentals: [
+      { word: 'Zuhören', icon: 'Ear' },
+      { word: 'Analyse', icon: 'Search' },
+      { word: 'Beziehung', icon: 'Handshake' },
+    ],
+    levers: [
+      {
+        title: 'Künstliche Intelligenz',
+        description:
+          'Informationen effizienter analysieren und zusammenfassen, um Entscheidungen und Maßnahmen fundiert vorzubereiten.',
+        icon: 'BrainCircuit',
+      },
+      {
+        title: 'Automatisierung',
+        description:
+          'Wiederkehrende Aufgaben zuverlässiger gestalten und Zeit für Gespräche mit höherem Mehrwert gewinnen.',
+        icon: 'Workflow',
+      },
+      {
+        title: 'Digitale Werkzeuge',
+        description:
+          'Informationen organisieren, Maßnahmen steuern und Ergebnisse messen, um die Strategie kontinuierlich zu verbessern.',
+        icon: 'PanelsTopLeft',
+      },
+    ],
+  },
+
+  limits: {
+    eyebrow: 'ANSPRÜCHE',
+    title: 'Was ich bewusst nicht tue',
+    intro:
+      'Eine wirksame Zusammenarbeit setzt Klarheit darüber voraus, was man gemeinsam aufbauen möchte – und worauf man auf diesem Weg nicht verzichten will.',
+    items: [
+      {
+        title: 'Keine Standardmethode ohne Verständnis des Kontexts',
+        description:
+          'Jedes Unternehmen, jeder Markt und jede Kundenbeziehung bringt eigene Herausforderungen mit sich. Eine Methode ist erst dann sinnvoll, wenn diese verstanden sind.',
+        icon: 'ScanSearch',
+      },
+      {
+        title: 'Keine Quantität auf Kosten der Qualität',
+        description:
+          'Mehr Aktivitäten sind nur dann sinnvoll, wenn sie die richtigen Menschen erreichen und echte Geschäftsmöglichkeiten schaffen.',
+        icon: 'Target',
+      },
+      {
+        title: 'Kein Druck als Grundlage einer Entscheidung',
+        description:
+          'Eine fundierte Entscheidung beruht auf wahrgenommenem Mehrwert, Vertrauen und gegenseitigem Verständnis.',
+        icon: 'Handshake',
+      },
+      {
+        title: 'Keine Strategie ohne Verbindung zur Umsetzung',
+        description:
+          'Empfehlungen müssen sich in konkrete Maßnahmen übersetzen lassen, deren Umsetzung gesteuert und deren Wirkung gemessen werden kann.',
+        icon: 'Workflow',
+      },
+      {
+        title: 'Keine Fortsetzung von Maßnahmen, die keinen Mehrwert mehr schaffen',
+        description:
+          'Ergebnisse müssen dazu dienen, zu lernen, nachzujustieren und – wenn es notwendig wird – die Richtung zu ändern.',
+        icon: 'RefreshCw',
+      },
+    ],
+  },
+
+  cta: {
+    eyebrow: 'AUSTAUSCH',
+    title: 'Gemeinsam Wachstum auf echtem Mehrwert aufbauen.',
+    paragraphs: [
+      'Jede Situation bringt eigene Herausforderungen, Rahmenbedingungen und Chancen mit sich. Am Anfang steht, sie zu verstehen, bevor wir festlegen, welche Maßnahmen langfristig wirksame Ergebnisse erzielen können.',
+      'Wenn Sie Ihre Positionierung schärfen, Ihre Geschäftsentwicklung strukturieren oder den Mehrwert Ihrer Kundenbeziehungen stärken möchten, lassen Sie uns darüber sprechen.',
+    ],
+    cta: 'Über Ihre Herausforderungen sprechen',
   },
 };

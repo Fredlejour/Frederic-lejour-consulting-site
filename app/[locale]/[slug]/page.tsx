@@ -7,10 +7,10 @@ import { ExpertisePage } from '@/components/sections/ExpertisePage';
 import { LegalPage } from '@/components/sections/LegalPage';
 import { PendingPage } from '@/components/sections/PendingPage';
 import { WorkPage } from '@/components/sections/WorkPage';
-import { approachFr } from '@/content/approach';
-import { careerFr } from '@/content/career';
-import { contactFr } from '@/content/contact';
-import { expertiseFr } from '@/content/expertise';
+import { approachDe, approachFr, type ApproachContent } from '@/content/approach';
+import { careerDe, careerFr, type CareerContent } from '@/content/career';
+import { contactDe, contactFr, type ContactContent } from '@/content/contact';
+import { expertiseDe, expertiseFr, type ExpertiseContent } from '@/content/expertise';
 import {
   legalNoticeDe,
   legalNoticeEn,
@@ -20,7 +20,7 @@ import {
   privacyFr,
   type LegalPageContent,
 } from '@/content/legal';
-import { workFr } from '@/content/work';
+import { workDe, workFr, type WorkContent } from '@/content/work';
 import { isLocale, locales, ogLocale, type Locale } from '@/lib/i18n';
 import {
   alternatesFor,
@@ -47,6 +47,32 @@ import { ui } from '@/lib/ui';
 const legalContentByPage: Record<'legalNotice' | 'privacy', Record<Locale, LegalPageContent>> = {
   legalNotice: { fr: legalNoticeFr, de: legalNoticeDe, en: legalNoticeEn },
   privacy: { fr: privacyFr, de: privacyDe, en: privacyEn },
+};
+
+/** Contenus éditoriaux publiés par page et par langue (pages « live »). */
+const approachContentByLocale: Record<'fr' | 'de', ApproachContent> = {
+  fr: approachFr,
+  de: approachDe,
+};
+
+const expertiseContentByLocale: Record<'fr' | 'de', ExpertiseContent> = {
+  fr: expertiseFr,
+  de: expertiseDe,
+};
+
+const workContentByLocale: Record<'fr' | 'de', WorkContent> = {
+  fr: workFr,
+  de: workDe,
+};
+
+const careerContentByLocale: Record<'fr' | 'de', CareerContent> = {
+  fr: careerFr,
+  de: careerDe,
+};
+
+const contactContentByLocale: Record<'fr' | 'de', ContactContent> = {
+  fr: contactFr,
+  de: contactDe,
 };
 
 export function generateStaticParams() {
@@ -80,10 +106,11 @@ export function generateMetadata({
     };
   }
 
-  if (pageKey === 'approach' && locale === 'fr') {
+  if (pageKey === 'approach' && (locale === 'fr' || locale === 'de')) {
+    const content = approachContentByLocale[locale];
     return {
-      title: approachFr.meta.title,
-      description: approachFr.meta.description,
+      title: content.meta.title,
+      description: content.meta.description,
       alternates: {
         canonical: urlFor(locale, pageKey),
         languages: alternatesFor(pageKey),
@@ -91,16 +118,17 @@ export function generateMetadata({
       openGraph: {
         url: urlFor(locale, pageKey),
         locale: ogLocale[locale],
-        title: approachFr.meta.title,
-        description: approachFr.meta.description,
+        title: content.meta.title,
+        description: content.meta.description,
       },
     };
   }
 
-  if (pageKey === 'expertise' && locale === 'fr') {
+  if (pageKey === 'expertise' && (locale === 'fr' || locale === 'de')) {
+    const content = expertiseContentByLocale[locale];
     return {
-      title: expertiseFr.meta.title,
-      description: expertiseFr.meta.description,
+      title: content.meta.title,
+      description: content.meta.description,
       alternates: {
         canonical: urlFor(locale, pageKey),
         languages: alternatesFor(pageKey),
@@ -108,16 +136,17 @@ export function generateMetadata({
       openGraph: {
         url: urlFor(locale, pageKey),
         locale: ogLocale[locale],
-        title: expertiseFr.meta.title,
-        description: expertiseFr.meta.description,
+        title: content.meta.title,
+        description: content.meta.description,
       },
     };
   }
 
-  if (pageKey === 'work' && locale === 'fr') {
+  if (pageKey === 'work' && (locale === 'fr' || locale === 'de')) {
+    const content = workContentByLocale[locale];
     return {
-      title: workFr.meta.title,
-      description: workFr.meta.description,
+      title: content.meta.title,
+      description: content.meta.description,
       alternates: {
         canonical: urlFor(locale, pageKey),
         languages: alternatesFor(pageKey),
@@ -125,16 +154,17 @@ export function generateMetadata({
       openGraph: {
         url: urlFor(locale, pageKey),
         locale: ogLocale[locale],
-        title: workFr.meta.title,
-        description: workFr.meta.description,
+        title: content.meta.title,
+        description: content.meta.description,
       },
     };
   }
 
-  if (pageKey === 'career' && locale === 'fr') {
+  if (pageKey === 'career' && (locale === 'fr' || locale === 'de')) {
+    const content = careerContentByLocale[locale];
     return {
-      title: careerFr.meta.title,
-      description: careerFr.meta.description,
+      title: content.meta.title,
+      description: content.meta.description,
       alternates: {
         canonical: urlFor(locale, pageKey),
         languages: alternatesFor(pageKey),
@@ -142,16 +172,17 @@ export function generateMetadata({
       openGraph: {
         url: urlFor(locale, pageKey),
         locale: ogLocale[locale],
-        title: careerFr.meta.title,
-        description: careerFr.meta.description,
+        title: content.meta.title,
+        description: content.meta.description,
       },
     };
   }
 
-  if (pageKey === 'contact' && locale === 'fr') {
+  if (pageKey === 'contact' && (locale === 'fr' || locale === 'de')) {
+    const content = contactContentByLocale[locale];
     return {
-      title: contactFr.meta.title,
-      description: contactFr.meta.description,
+      title: content.meta.title,
+      description: content.meta.description,
       alternates: {
         canonical: urlFor(locale, pageKey),
         languages: alternatesFor(pageKey),
@@ -159,8 +190,8 @@ export function generateMetadata({
       openGraph: {
         url: urlFor(locale, pageKey),
         locale: ogLocale[locale],
-        title: contactFr.meta.title,
-        description: contactFr.meta.description,
+        title: content.meta.title,
+        description: content.meta.description,
       },
     };
   }
@@ -207,24 +238,24 @@ export default function LocalisedPage({ params }: { params: { locale: string; sl
     return <PendingPage locale={locale} pageKey={pageKey} />;
   }
 
-  if (pageKey === 'approach' && locale === 'fr') {
-    return <ApproachPage content={approachFr} locale={locale} />;
+  if (pageKey === 'approach' && (locale === 'fr' || locale === 'de')) {
+    return <ApproachPage content={approachContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'expertise' && locale === 'fr') {
-    return <ExpertisePage content={expertiseFr} locale={locale} />;
+  if (pageKey === 'expertise' && (locale === 'fr' || locale === 'de')) {
+    return <ExpertisePage content={expertiseContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'work' && locale === 'fr') {
-    return <WorkPage content={workFr} locale={locale} />;
+  if (pageKey === 'work' && (locale === 'fr' || locale === 'de')) {
+    return <WorkPage content={workContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'career' && locale === 'fr') {
-    return <CareerPage content={careerFr} locale={locale} />;
+  if (pageKey === 'career' && (locale === 'fr' || locale === 'de')) {
+    return <CareerPage content={careerContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'contact' && locale === 'fr') {
-    return <ContactPage content={contactFr} locale={locale} />;
+  if (pageKey === 'contact' && (locale === 'fr' || locale === 'de')) {
+    return <ContactPage content={contactContentByLocale[locale]} locale={locale} />;
   }
 
   if (pageKey === 'legalNotice' || pageKey === 'privacy') {

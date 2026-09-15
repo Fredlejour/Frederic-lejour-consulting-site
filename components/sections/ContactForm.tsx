@@ -56,7 +56,7 @@ export function ContactForm({ form, success, error, privacyHref }: Props) {
       // `subject` est réservé par Web3Forms pour l'objet du courriel reçu ;
       // l'objet choisi par le visiteur est transmis sous `demande`.
       const demande = String(data.get('subject') ?? '');
-      data.set('subject', 'Nouveau message depuis lejourconsulting.com');
+      data.set('subject', form.emailSubject);
       if (demande) data.set('demande', demande);
       data.append('access_key', WEB3FORMS_ACCESS_KEY);
       data.append('from_name', 'Site Frédéric Lejour');
@@ -138,7 +138,7 @@ export function ContactForm({ form, success, error, privacyHref }: Props) {
           {/* Honeypot natif Web3Forms : ignoré par les humains, piège les robots. */}
           <div className="hidden" aria-hidden="true">
             <label>
-              Ne pas remplir ce champ
+              {form.honeypotLabel}
               <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" />
             </label>
           </div>

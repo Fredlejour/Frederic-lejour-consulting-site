@@ -61,12 +61,12 @@ function ExpertiseHero({ content }: { content: ExpertiseContent['hero'] }) {
 
 /* ──────────────────────────────────────── Domaines ──────────────────────────────────────── */
 
-function DomainIcon({ title }: { title: string }) {
+const domainIcons = { Target, Users, Handshake, Scale };
+
+function DomainIcon({ icon }: { icon: string }) {
   const className = 'h-5 w-5 text-accent';
-  if (title.includes('opportunités')) return <Target className={className} strokeWidth={1.5} />;
-  if (title.includes('comptes')) return <Users className={className} strokeWidth={1.5} />;
-  if (title.includes('partenariats')) return <Handshake className={className} strokeWidth={1.5} />;
-  return <Scale className={className} strokeWidth={1.5} />;
+  const Icon = domainIcons[icon as keyof typeof domainIcons] ?? Scale;
+  return <Icon className={className} strokeWidth={1.5} />;
 }
 
 function ExpertiseDomains({ content }: { content: ExpertiseContent['domains'] }) {
@@ -92,7 +92,7 @@ function ExpertiseDomains({ content }: { content: ExpertiseContent['domains'] })
               >
                 {domain.step}
               </span>
-              <DomainIcon title={domain.title} />
+              <DomainIcon icon={domain.icon} />
             </div>
 
             <div className="mt-8">

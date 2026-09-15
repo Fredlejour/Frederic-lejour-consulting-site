@@ -14,7 +14,7 @@ type PageProps = {
 };
 
 /**
- * Page Approche (/fr/approche).
+ * Page Approche (/fr/approche ↔ /de/arbeitsweise).
  *
  * Huit sections composent la page. Tous les sous-composants sont internes à
  * ce fichier pour respecter la décision de ne pas multiplier les fichiers.
@@ -78,10 +78,10 @@ function ApproachReality({ content }: { content: ApproachContent['reality'] }) {
 }
 
 const stepIcons: Record<string, LucideIcon> = {
-  Observer: Eye,
-  Apprendre: BookOpen,
-  Adapter: SlidersHorizontal,
-  Développer: ArrowUpRight,
+  Eye,
+  BookOpen,
+  SlidersHorizontal,
+  ArrowUpRight,
 };
 
 function ApproachConviction({ content }: { content: ApproachContent['conviction'] }) {
@@ -107,7 +107,7 @@ function ApproachConviction({ content }: { content: ApproachContent['conviction'
         >
           {content.verbs
             .map((verb, index) => {
-              const StepIcon = stepIcons[verb.word];
+              const StepIcon = stepIcons[verb.icon];
 
               const step = (
                 <div
@@ -187,8 +187,7 @@ function ApproachExecution({ content }: { content: ApproachContent['execution'] 
   const items = content.areas
     .map((area, index) => {
       const prefix = [] as { type: 'label'; text: string }[];
-      if (index === 0) prefix.push({ type: 'label', text: 'Concevoir' });
-      if (index === 4) prefix.push({ type: 'label', text: 'Exécuter et améliorer' });
+      if (area.phase) prefix.push({ type: 'label', text: area.phase });
       return [...prefix, { type: 'step' as const, index, area }];
     })
     .flat();
@@ -290,7 +289,7 @@ function ApproachTechnology({ content }: { content: ApproachContent['technology'
           <div className="h-px w-full bg-accent" />
           <Reveal variant="scale" className="w-full">
             <blockquote className="py-4 text-center font-body font-medium text-heading-xl text-foreground">
-              <p className="text-balance">« {content.quote} »</p>
+              <p className="text-balance">{content.quote}</p>
             </blockquote>
           </Reveal>
           <div className="h-px w-full bg-accent" />
@@ -304,8 +303,8 @@ function ApproachTechnology({ content }: { content: ApproachContent['technology'
         >
           <div className="flex flex-col pb-10 lg:pb-0 lg:pr-16">
             <div className="text-caption uppercase tracking-widest">
-              <span className="block text-accent">L’HUMAIN</span>
-              <span className="block text-muted">Point de départ</span>
+              <span className="block text-accent">{content.labels.human.title}</span>
+              <span className="block text-muted">{content.labels.human.subtitle}</span>
             </div>
 
             <p className="mt-3 text-body-lg text-muted">{content.paragraphs[0]}</p>
@@ -336,8 +335,8 @@ function ApproachTechnology({ content }: { content: ApproachContent['technology'
 
           <div className="flex flex-col border-t border-accent pt-10 lg:border-t-0 lg:border-l lg:pl-16 lg:pt-0">
             <div className="text-caption uppercase tracking-widest">
-              <span className="block text-accent">LA TECHNOLOGIE</span>
-              <span className="block text-muted">Levier</span>
+              <span className="block text-accent">{content.labels.tech.title}</span>
+              <span className="block text-muted">{content.labels.tech.subtitle}</span>
             </div>
 
             <p className="mt-3 text-body-lg text-muted">{content.paragraphs[1]}</p>

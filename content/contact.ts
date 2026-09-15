@@ -60,6 +60,10 @@ export type ContactContent = {
     privacyLabel: string;
     submit: string;
     sending: string;
+    /** Label masqué du honeypot anti-robots (champ `botcheck`). */
+    honeypotLabel: string;
+    /** Objet du courriel reçu via Web3Forms. */
+    emailSubject: string;
   };
   success: {
     title: string;
@@ -145,6 +149,8 @@ export const contactFr: ContactContent = {
     privacyLabel: 'Politique de confidentialité',
     submit: 'Envoyer mon message',
     sending: 'Envoi en cours…',
+    honeypotLabel: 'Ne pas remplir ce champ',
+    emailSubject: 'Nouveau message depuis lejourconsulting.com',
   },
   success: {
     title: 'Votre message a bien été transmis.',
@@ -153,5 +159,100 @@ export const contactFr: ContactContent = {
   },
   error: {
     text: 'Une erreur a empêché l’envoi de votre message. Vérifiez votre connexion puis réessayez.',
+  },
+};
+
+/**
+ * Contenu allemand de la page Kontakt (/de/kontakt).
+ *
+ * Traduction professionnelle validée des textes français ci-dessus.
+ * Même structure, même URL LinkedIn, même fonctionnement Web3Forms.
+ */
+export const contactDe: ContactContent = {
+  meta: {
+    title: 'Kontakt — Frédéric Lejour',
+    description:
+      'Kontaktieren Sie Frédéric Lejour für einen Austausch über eine berufliche Möglichkeit, eine Aufgabe in der Geschäftsentwicklung, eine strategische Geschäftsbeziehung oder eine Partnerschaft.',
+  },
+  hero: {
+    eyebrow: 'KONTAKT',
+    title: [
+      'Eine Situation verstehen',
+      'Potenzial entwickeln',
+      'Lassen Sie uns darüber sprechen',
+    ],
+    intro:
+      'Ob es um eine berufliche Möglichkeit, eine Zusammenarbeit, die Entwicklung eines Marktes oder den Ausbau einer strategischen Beziehung geht: In einem ersten Gespräch geht es zunächst darum, Ihre Situation zu verstehen.',
+  },
+  reasons: {
+    eyebrow: 'IM AUSTAUSCH',
+    title: 'Jeder Kontakt beginnt mit aufmerksamem Zuhören.',
+    intro:
+      'Schildern Sie mir Ihren Kontext, Ihre Ziele oder die Herausforderung, für die Sie eine Lösung suchen.',
+    items: [
+      {
+        step: '01',
+        title: 'Berufliche Möglichkeit',
+        description:
+          'Business Development, Account Management oder strategische Beziehungen.',
+      },
+      {
+        step: '02',
+        title: 'Auftrag oder Zusammenarbeit',
+        description:
+          'Geschäftsentwicklung, Strukturierung eines Angebots oder Kundengewinnung.',
+      },
+      {
+        step: '03',
+        title: 'Partnerschaft',
+        description:
+          'Gemeinsam Mehrwert schaffen und langfristige Beziehungen entwickeln.',
+      },
+      {
+        step: '04',
+        title: 'Unverbindlicher Austausch',
+        description:
+          'Manchmal muss eine Situation zunächst verstanden werden, bevor sich eine Lösung definieren lässt.',
+      },
+    ],
+  },
+  linkedin: {
+    label: 'Mein Profil auf LinkedIn ansehen',
+    href: 'https://www.linkedin.com/in/fredericlejour/',
+  },
+  form: {
+    title: 'Lassen Sie uns mit einigen Angaben beginnen.',
+    fields: {
+      name: 'Vor- und Nachname',
+      email: 'E-Mail-Adresse',
+      company: 'Unternehmen oder Organisation',
+      companyOptional: '(optional)',
+      subject: 'Betreff Ihrer Nachricht',
+      subjectPlaceholder: 'Bitte auswählen …',
+      subjectOptions: [
+        'Berufliche Möglichkeit',
+        'Auftrag oder Zusammenarbeit',
+        'Partnerschaft',
+        'Anderes Anliegen',
+      ],
+      message: 'Ihre Nachricht',
+    },
+    consent:
+      'Ich bin damit einverstanden, dass die von mir eingegebenen Informationen ausschließlich zur Bearbeitung meiner Anfrage verwendet werden.',
+    reassurance:
+      'Ihre Nachricht ist für Frédéric Lejour bestimmt. Die von Ihnen eingegebenen Informationen werden ausschließlich dazu verwendet, Ihre Anfrage zu bearbeiten und Ihnen zu antworten.',
+    privacyLabel: 'Datenschutzerklärung',
+    submit: 'Nachricht senden',
+    sending: 'Nachricht wird gesendet …',
+    honeypotLabel: 'Dieses Feld nicht ausfüllen',
+    emailSubject: 'Neue Nachricht über lejourconsulting.com',
+  },
+  success: {
+    title: 'Ihre Nachricht wurde erfolgreich übermittelt.',
+    text: 'Vielen Dank für Ihr Interesse an meinem Profil und meiner Expertise. Ich werde mich persönlich mit Ihrer Anfrage befassen.',
+    again: 'Eine weitere Nachricht senden',
+  },
+  error: {
+    text: 'Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.',
   },
 };
