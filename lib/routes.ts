@@ -75,7 +75,16 @@ export const footerNavKeys: PageKey[] = ['legalNotice', 'privacy'];
 export const livePages: Record<Locale, PageKey[]> = {
   fr: pageKeys,
   de: ['home', 'approach', 'expertise', 'work', 'career', 'contact', 'legalNotice', 'privacy'],
-  en: ['legalNotice', 'privacy'],
+  en: [
+    'home',
+    'approach',
+    'expertise',
+    'work',
+    'career',
+    'contact',
+    'legalNotice',
+    'privacy',
+  ],
 };
 
 /** Indique si une page est réellement publiée dans une langue. */

@@ -7,10 +7,10 @@ import { ExpertisePage } from '@/components/sections/ExpertisePage';
 import { LegalPage } from '@/components/sections/LegalPage';
 import { PendingPage } from '@/components/sections/PendingPage';
 import { WorkPage } from '@/components/sections/WorkPage';
-import { approachDe, approachFr, type ApproachContent } from '@/content/approach';
-import { careerDe, careerFr, type CareerContent } from '@/content/career';
-import { contactDe, contactFr, type ContactContent } from '@/content/contact';
-import { expertiseDe, expertiseFr, type ExpertiseContent } from '@/content/expertise';
+import { approachDe, approachEn, approachFr, type ApproachContent } from '@/content/approach';
+import { careerDe, careerEn, careerFr, type CareerContent } from '@/content/career';
+import { contactDe, contactEn, contactFr, type ContactContent } from '@/content/contact';
+import { expertiseDe, expertiseEn, expertiseFr, type ExpertiseContent } from '@/content/expertise';
 import {
   legalNoticeDe,
   legalNoticeEn,
@@ -20,7 +20,7 @@ import {
   privacyFr,
   type LegalPageContent,
 } from '@/content/legal';
-import { workDe, workFr, type WorkContent } from '@/content/work';
+import { workDe, workEn, workFr, type WorkContent } from '@/content/work';
 import { isLocale, locales, ogLocale, type Locale } from '@/lib/i18n';
 import {
   alternatesFor,
@@ -50,29 +50,34 @@ const legalContentByPage: Record<'legalNotice' | 'privacy', Record<Locale, Legal
 };
 
 /** Contenus éditoriaux publiés par page et par langue (pages « live »). */
-const approachContentByLocale: Record<'fr' | 'de', ApproachContent> = {
+const approachContentByLocale: Record<Locale, ApproachContent> = {
   fr: approachFr,
   de: approachDe,
+  en: approachEn,
 };
 
-const expertiseContentByLocale: Record<'fr' | 'de', ExpertiseContent> = {
+const expertiseContentByLocale: Record<Locale, ExpertiseContent> = {
   fr: expertiseFr,
   de: expertiseDe,
+  en: expertiseEn,
 };
 
-const workContentByLocale: Record<'fr' | 'de', WorkContent> = {
+const workContentByLocale: Record<Locale, WorkContent> = {
   fr: workFr,
   de: workDe,
+  en: workEn,
 };
 
-const careerContentByLocale: Record<'fr' | 'de', CareerContent> = {
+const careerContentByLocale: Record<Locale, CareerContent> = {
   fr: careerFr,
   de: careerDe,
+  en: careerEn,
 };
 
-const contactContentByLocale: Record<'fr' | 'de', ContactContent> = {
+const contactContentByLocale: Record<Locale, ContactContent> = {
   fr: contactFr,
   de: contactDe,
+  en: contactEn,
 };
 
 export function generateStaticParams() {
@@ -106,7 +111,7 @@ export function generateMetadata({
     };
   }
 
-  if (pageKey === 'approach' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'approach') {
     const content = approachContentByLocale[locale];
     return {
       title: content.meta.title,
@@ -124,7 +129,7 @@ export function generateMetadata({
     };
   }
 
-  if (pageKey === 'expertise' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'expertise') {
     const content = expertiseContentByLocale[locale];
     return {
       title: content.meta.title,
@@ -142,7 +147,7 @@ export function generateMetadata({
     };
   }
 
-  if (pageKey === 'work' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'work') {
     const content = workContentByLocale[locale];
     return {
       title: content.meta.title,
@@ -160,7 +165,7 @@ export function generateMetadata({
     };
   }
 
-  if (pageKey === 'career' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'career') {
     const content = careerContentByLocale[locale];
     return {
       title: content.meta.title,
@@ -178,7 +183,7 @@ export function generateMetadata({
     };
   }
 
-  if (pageKey === 'contact' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'contact') {
     const content = contactContentByLocale[locale];
     return {
       title: content.meta.title,
@@ -238,23 +243,23 @@ export default function LocalisedPage({ params }: { params: { locale: string; sl
     return <PendingPage locale={locale} pageKey={pageKey} />;
   }
 
-  if (pageKey === 'approach' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'approach') {
     return <ApproachPage content={approachContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'expertise' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'expertise') {
     return <ExpertisePage content={expertiseContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'work' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'work') {
     return <WorkPage content={workContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'career' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'career') {
     return <CareerPage content={careerContentByLocale[locale]} locale={locale} />;
   }
 
-  if (pageKey === 'contact' && (locale === 'fr' || locale === 'de')) {
+  if (pageKey === 'contact') {
     return <ContactPage content={contactContentByLocale[locale]} locale={locale} />;
   }
 

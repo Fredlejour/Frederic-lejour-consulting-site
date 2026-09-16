@@ -262,3 +262,117 @@ export const homeDe: HomeContent = {
     secondaryCta: 'Meine Arbeitsweise kennenlernen',
   },
 };
+
+export const homeEn: HomeContent = {
+  meta: {
+    title: 'Frédéric Lejour — Business Development & Strategic Relationships',
+    description:
+      'Business Development, Key Account Management, strategic partnerships and growth: turning a company’s commercial potential into measurable results.',
+  },
+  hero: {
+    eyebrow: 'BUSINESS DEVELOPMENT • STRATEGIC RELATIONSHIPS • GROWTH',
+    title: [
+      'Your company',
+      'has the potential',
+      'Let’s turn it into results',
+    ],
+    intro: [
+      'Your company has a strong offering, a real market and a committed team. Yet commercial results do not always progress at the expected pace.',
+      'I bring a fresh perspective to identify the real barriers to decision-making, open up new opportunities and turn commercial ambition into concrete, measurable action.',
+    ],
+    nextSection: 'Discover more',
+    photoAlt:
+      'Frédéric Lejour, business development and strategic relationships expert',
+  },
+  philosophy: {
+    eyebrow: 'PHILOSOPHY',
+    quote: '“Create enough value to make the decision to buy feel natural.”',
+    intro:
+      'For more than 20 years, I have developed commercial activities, opened up new opportunities and built lasting relationships across telecommunications, financial services, real estate and consulting.',
+  },
+  domains: {
+    eyebrow: 'AREAS OF VALUE',
+    title: 'Four levers for business growth',
+    items: [
+      {
+        title: 'Develop new business opportunities',
+        description:
+          'Business Development, targeted prospecting, qualification and customer acquisition.',
+      },
+      {
+        title: 'Grow strategic accounts',
+        description:
+          'Key Account Management, customer retention, account development and Customer Growth.',
+      },
+      {
+        title: 'Build lasting partnerships',
+        description:
+          'Strategic Partnerships, partner networks and the creation of new revenue opportunities.',
+      },
+      {
+        title: 'Facilitate complex decisions',
+        description:
+          'Value clarification, relationship intelligence, negotiation and decision support.',
+      },
+    ],
+  },
+  approach: {
+    eyebrow: 'APPROACH',
+    title: 'From strategy to results',
+    intro:
+      'My approach combines strategic vision with operational commitment. I do more than provide recommendations: I turn objectives into concrete, measurable actions focused on results.',
+    steps: [
+      {
+        step: '01',
+        title: 'Understand',
+        description: 'Analyse the market, motivations and barriers.',
+      },
+      {
+        step: '02',
+        title: 'Structure',
+        description: 'Clarify the value proposition and build the action plan.',
+      },
+      {
+        step: '03',
+        title: 'Accelerate',
+        description: 'Execute, measure and adjust to deliver results.',
+      },
+    ],
+  },
+  proof: {
+    eyebrow: 'EXPERIENCE',
+    title: 'Proven experience in the field',
+    items: [
+      {
+        value: '20+',
+        label: 'years of commercial and entrepreneurial experience',
+      },
+      {
+        value: '10',
+        label: 'team members managed across two teams',
+      },
+      {
+        value: '140+',
+        label: 'real estate transactions completed',
+      },
+      {
+        value: 'FR / DE',
+        label:
+          'first-hand knowledge of the business cultures, practices and environments of both countries',
+      },
+    ],
+  },
+  intelligence: {
+    eyebrow: 'RELATIONSHIP INTELLIGENCE',
+    title: 'Understanding what lies behind the numbers',
+    description:
+      'My strength lies in my ability to quickly understand what motivates people, build trust and bring clients, partners and teams together around a shared ambition.',
+  },
+  finalCta: {
+    title: 'Is your company turning its full potential into results?',
+    description:
+      'Let’s discuss your Business Development, strategic account or partnership challenges.',
+    primaryCta: 'Talk to Frédéric Lejour',
+    secondaryCta: 'Explore my approach',
+  },
+};

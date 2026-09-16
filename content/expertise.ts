@@ -361,3 +361,163 @@ export const expertiseDe: ExpertiseContent = {
     secondaryCta: 'Meine Arbeitsweise kennenlernen',
   },
 };
+
+/**
+ * Contenu de la page Expertise (/en/expertise).
+ * Textes fournis et validés par Frédéric Lejour.
+ */
+export const expertiseEn: ExpertiseContent = {
+  meta: {
+    title: 'Business Development Expertise | Frédéric Lejour',
+    description:
+      'Business development, strategic accounts, partnerships and negotiation: discover Frédéric Lejour’s expertise in turning commercial potential into tangible growth.',
+  },
+  hero: {
+    eyebrow: 'EXPERTISE',
+    title: [
+      'Turn commercial potential',
+      'into tangible growth',
+    ],
+    intro: [
+      'Commercial performance does not depend on a single action. It rests on the ability to understand a market, create value, build strong relationships and facilitate decisions.',
+      'I focus on the levers that turn commercial potential into tangible opportunities, lasting accounts and measurable results.',
+    ],
+  },
+  domains: {
+    eyebrow: 'AREAS OF EXPERTISE',
+    title: 'Four levers to grow commercial value',
+    intro:
+      'Every situation calls for a specific response. These four areas are the main levers I can activate to support a company’s growth.',
+    items: [
+      {
+        step: '01',
+        title: 'Develop new business opportunities',
+        description:
+          'Identify new markets, target the right decision-makers and turn prospecting into qualified sales conversations.',
+        tags:
+          'Business Development · Targeted Prospecting · Qualification · Customer Acquisition',
+        icon: 'Target',
+      },
+      {
+        step: '02',
+        title: 'Grow strategic accounts',
+        description:
+          'Understand the client’s priorities, deepen the relationship and unlock untapped growth potential within the account.',
+        tags:
+          'Key Account Management · Customer Retention · Customer Growth',
+        icon: 'Users',
+      },
+      {
+        step: '03',
+        title: 'Build lasting partnerships',
+        description:
+          'Identify complementary strengths, align interests and structure collaborations capable of creating new revenue opportunities.',
+        tags:
+          'Strategic Partnerships · Partner Networks · Ecosystem Development',
+        icon: 'Handshake',
+      },
+      {
+        step: '04',
+        title: 'Facilitate complex decisions',
+        description:
+          'Clarify value, understand each stakeholder’s motivations and create the conditions for a natural, lasting decision.',
+        tags:
+          'Relationship Intelligence · Negotiation · Decision Support',
+        icon: 'Scale',
+      },
+    ],
+  },
+  situations: {
+    eyebrow: 'WHEN I CAN HELP',
+    title:
+      'When the potential is there but has yet to translate fully into results',
+    intro:
+      'I step in when a company already has an offering, a market or commercial relationships, but an obstacle is still preventing them from reaching their full potential.',
+    items: [
+      {
+        step: '01',
+        title: 'Your offering is strong, but growth is slowing',
+        description:
+          'The market exists and the team is committed, but results are no longer progressing at the expected pace. The challenge is to identify the barriers, refocus priorities and open up new avenues for growth.',
+      },
+      {
+        step: '02',
+        title:
+          'Prospecting generates activity, but too few real opportunities',
+        description:
+          'Activity is increasing without producing enough qualified conversations. I help improve targeting, sharpen the value proposition and turn initial contacts into genuine opportunities.',
+      },
+      {
+        step: '03',
+        title: 'Strategic accounts remain underdeveloped',
+        description:
+          'The commercial relationship exists, but its potential has not been fully developed. The challenge is to understand the client more deeply, identify new needs and build sustainable account growth.',
+      },
+      {
+        step: '04',
+        title: 'A complex commercial decision remains stalled',
+        description:
+          'Multiple stakeholders, interests or constraints are slowing progress. I help clarify the value, understand motivations and create the conditions for a natural decision.',
+      },
+      {
+        step: '05',
+        title:
+          'A promising partnership needs to become a genuine source of business',
+        description:
+          'The intention is there, but the model, responsibilities or activation plan remain unclear. I help structure the partnership and translate it into concrete action.',
+      },
+      {
+        step: '06',
+        title:
+          'The tools are in place, but they do not yet form a coherent commercial system',
+        description:
+          'CRM, artificial intelligence, automation and prospecting tools are being used separately. The goal is to organise them around a clear, deeply human commercial strategy.',
+      },
+    ],
+  },
+  skills: {
+    eyebrow: 'CAPABILITIES APPLIED',
+    title: 'Commercial, strategic and relationship expertise',
+    intro:
+      'Depending on the situation, I combine several capabilities to understand the challenge, create value and support its development through to measurable results.',
+    items: [
+      {
+        title: 'Business development',
+        description:
+          'Identify relevant markets, build a qualified acquisition plan and turn objectives into tangible opportunities.',
+      },
+      {
+        title: 'Acquisition and qualification',
+        description:
+          'Target the right decision-makers, clarify the value proposition and structure an effective prospecting journey.',
+      },
+      {
+        title: 'Account management and growth',
+        description:
+          'Understand client priorities, uncover hidden needs and develop the account’s growth potential.',
+      },
+      {
+        title: 'Complex negotiation',
+        description:
+          'Clarify each party’s interests, remove barriers and create the conditions for a mutually beneficial decision.',
+      },
+      {
+        title: 'Strategic relationships and partnerships',
+        description:
+          'Identify complementary strengths, align interests and build lasting, productive collaborations.',
+      },
+      {
+        title: 'Artificial intelligence, automation and digital tools',
+        description:
+          'Use technology as a lever to structure information more effectively, make repetitive tasks more reliable and free up time for higher-value interactions.',
+      },
+    ],
+  },
+  cta: {
+    title: 'What commercial potential remains untapped?',
+    text:
+      'Let’s discuss your business development, strategic account, partnership or complex decision challenges.',
+    primaryCta: 'Talk to Frédéric Lejour',
+    secondaryCta: 'Explore my approach',
+  },
+};

@@ -556,3 +556,237 @@ export const approachDe: ApproachContent = {
     cta: 'Über Ihre Herausforderungen sprechen',
   },
 };
+
+/**
+ * Contenu de la page Approach (/en/approach).
+ * Textes fournis et validés par Frédéric Lejour.
+ */
+export const approachEn: ApproachContent = {
+  meta: {
+    title: 'Approach — Frédéric Lejour',
+    description:
+      'Understand before proposing, create value before persuading: a business development approach built on listening, structure and trust.',
+  },
+
+  hero: {
+    eyebrow: 'APPROACH',
+    title: [
+      'Understand before you propose',
+      'Create value before you persuade',
+    ],
+    intro: [
+      'Commercial performance does not begin with a sales pitch. It begins with a precise understanding of the challenges, expectations and obstacles that shape the decision.',
+      'My approach consists in turning that understanding into a clear value proposition, a better-structured acquisition strategy and a trusted relationship capable of supporting sustainable growth.',
+    ],
+  },
+
+  reality: {
+    eyebrow: 'EXPERIENCE',
+    title: 'A method built in the real world',
+    paragraphs: [
+      'This approach did not originate in a theoretical model. It took shape over more than twenty years alongside clients, teams, companies and markets facing very different challenges.',
+      'Sales leadership, business development, sales, negotiation, entrepreneurship, consulting, training, recruitment, real estate and B2B assignments have all provided grounds for observation, experimentation and learning.',
+      'That diversity taught me never to confuse a hypothesis with certainty. A strategy only becomes truly useful when it produces results, is tested against the market and can evolve based on what the market teaches us.',
+    ],
+  },
+
+  conviction: {
+    eyebrow: 'CONVICTION',
+    title: 'What this experience has taught me',
+    paragraphs: [
+      'An offering does not succeed simply because it is good. It must address a real need, communicate its value clearly and give the customer compelling reasons to choose it.',
+      'Experience has taught me that no strategy can remain static. Expectations evolve, markets respond and results sometimes reveal what the initial assumptions could not anticipate.',
+      'That is why my approach is based on four complementary actions:',
+    ],
+    verbs: [
+      {
+        word: 'Observe',
+        explanation: 'Observe reality in order to understand it.',
+        icon: 'Eye',
+      },
+      {
+        word: 'Learn',
+        explanation: 'Learn from every interaction and every result.',
+        icon: 'BookOpen',
+      },
+      {
+        word: 'Adapt',
+        explanation: 'Adapt the strategy whenever necessary.',
+        icon: 'SlidersHorizontal',
+      },
+      {
+        word: 'Develop',
+        explanation: 'Develop what creates lasting value.',
+        icon: 'ArrowUpRight',
+      },
+    ],
+  },
+
+  steps: {
+    eyebrow: 'METHOD',
+    title: 'A four-stage approach',
+    intro:
+      'Every engagement begins with an accurate assessment of the situation. The objective is not to apply a predefined method, but to build a response aligned with the challenges, the market and the people involved.',
+    items: [
+      {
+        step: '01',
+        title: 'Understand the real challenges',
+        description:
+          'Listen before responding. Analyse the situation, the objectives, the constraints and the criteria that genuinely shape the decision.',
+      },
+      {
+        step: '02',
+        title: 'Create enough value',
+        description:
+          'Clarify what the offering delivers, strengthen its differentiation and connect its value to the customer’s highest-priority expectations.',
+      },
+      {
+        step: '03',
+        title: 'Build a quality-focused acquisition strategy',
+        description:
+          'Identify the right targets, develop suitable messages and organise a coherent sales journey without confusing activity with effectiveness.',
+      },
+      {
+        step: '04',
+        title: 'Strengthen trust',
+        description:
+          'Build a relationship based on transparency, relevant dialogue and respect for commitments. Trust facilitates the decision and supports a lasting relationship.',
+      },
+    ],
+  },
+
+  execution: {
+    eyebrow: 'COMMITMENT',
+    title: 'Design and deliver',
+    intro: [
+      'A recommendation only creates value when it can be understood, implemented and tested against reality.',
+      'I combine strategic thinking with execution to turn decisions into action, measure their effects and progressively improve what needs to be improved.',
+    ],
+    areas: [
+      {
+        title: 'Assessment',
+        description:
+          'Understand the situation, identify the obstacles and reveal the opportunities.',
+        phase: 'Design',
+      },
+      {
+        title: 'Strategy',
+        description:
+          'Define the priorities, the structuring choices and the direction to follow.',
+      },
+      {
+        title: 'Positioning and messaging',
+        description:
+          'Clearly express the value of the offering and develop messages suited to the target audiences.',
+      },
+      {
+        title: 'Sales process',
+        description:
+          'Organise the stages, responsibilities, tools and indicators required for development.',
+      },
+      {
+        title: 'Implementation',
+        description:
+          'Support the transition from strategy to action and contribute to its delivery.',
+        phase: 'Deliver and improve',
+      },
+      {
+        title: 'Analysis and adjustment',
+        description:
+          'Observe the results, draw useful lessons and adapt the actions whenever the situation requires it.',
+      },
+    ],
+  },
+
+  technology: {
+    eyebrow: 'TECHNOLOGY',
+    title: [
+      'People as the starting point.',
+      'Technology as a lever.',
+    ],
+    quote:
+      '“Technology accelerates a sound strategy. It replaces neither listening, analysis nor human connection.”',
+    labels: {
+      human: { title: 'PEOPLE', subtitle: 'Starting point' },
+      tech: { title: 'TECHNOLOGY', subtitle: 'Lever' },
+    },
+    paragraphs: [
+      'Commercial performance remains fundamentally human. Understanding motivations, interpreting signals, building trust and making sound decisions require a level of attention that no tool can replace.',
+      'When used thoughtfully, however, technology makes it possible to move faster, structure information more effectively and focus energy on the actions that genuinely create value.',
+    ],
+    fundamentals: [
+      { word: 'Listening', icon: 'Ear' },
+      { word: 'Analysis', icon: 'Search' },
+      { word: 'Relationships', icon: 'Handshake' },
+    ],
+    levers: [
+      {
+        title: 'Artificial intelligence',
+        description:
+          'Analyse, synthesise and prepare decisions and actions more effectively.',
+        icon: 'BrainCircuit',
+      },
+      {
+        title: 'Automation',
+        description:
+          'Make repetitive tasks more reliable and free up time for higher-value interactions.',
+        icon: 'Workflow',
+      },
+      {
+        title: 'Digital tools',
+        description:
+          'Organise information, manage actions and measure results in order to continuously improve the strategy.',
+        icon: 'PanelsTopLeft',
+      },
+    ],
+  },
+
+  limits: {
+    eyebrow: 'STANDARDS',
+    title: 'What I consciously choose not to do',
+    intro:
+      'Effective collaboration requires clarity about what we want to build, but also about what we refuse to sacrifice along the way.',
+    items: [
+      {
+        title: 'No one-size-fits-all method without understanding the context',
+        description:
+          'Every company, market and commercial relationship has its own challenges. A method only becomes relevant once those challenges have been understood.',
+        icon: 'ScanSearch',
+      },
+      {
+        title: 'No volume at the expense of quality',
+        description:
+          'Increasing activity only makes sense when it targets the right people and creates genuine opportunities.',
+        icon: 'Target',
+      },
+      {
+        title: 'No pressure as a driver of decisions',
+        description:
+          'A sound decision is built on perceived value, trust and mutual understanding.',
+        icon: 'Handshake',
+      },
+      {
+        title: 'No strategy disconnected from execution',
+        description:
+          'Recommendations must be capable of being translated into concrete, managed and measurable actions.',
+        icon: 'Workflow',
+      },
+      {
+        title: 'No action continued once it stops creating value',
+        description:
+          'Results must make it possible to learn, adjust and, whenever necessary, change direction.',
+        icon: 'RefreshCw',
+      },
+    ],
+  },
+
+  cta: {
+    eyebrow: 'LET’S TALK',
+    title: 'Let’s build growth grounded in real value.',
+    paragraphs: [
+      'Every situation has its own challenges, constraints and opportunities. The starting point is to understand them before determining which actions can produce lasting results.',
+      'If you want to clarify your positioning, structure your business development or strengthen the value created through your customer relationships, let’s start with a conversation.',
+    ],
+    cta: 'Discuss your challenges',
+  },
+};

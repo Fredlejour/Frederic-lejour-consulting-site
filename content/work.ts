@@ -481,3 +481,271 @@ export const workDe: WorkContent = {
     secondaryHref: '/de/expertise',
   },
 };
+
+/**
+ * Contenu de la page Projects (/en/projects).
+ * Textes fournis et validés par Frédéric Lejour.
+ */
+export const workEn: WorkContent = {
+  meta: {
+    title: 'Business Development Projects | Frédéric Lejour',
+    description:
+      'Explore Frédéric Lejour’s projects in business development, real estate, offer creation, digital acquisition and international growth.',
+  },
+  labels: {
+    valueCreated: 'Value created',
+    results: 'Results',
+    demonstrated: 'Demonstrated expertise',
+  },
+  hero: {
+    eyebrow: 'PROJECTS',
+    title: [
+      'Different experiences,',
+      'the same standard:',
+      'creating value',
+    ],
+    intro: [
+      'My career has taken shape across telecommunications, entrepreneurship, wealth management and real estate.',
+      'Across these environments, I have developed businesses, designed offerings, built commercial relationships and supported complex decisions with one constant priority: turning opportunity into tangible results.',
+    ],
+  },
+  items: [
+    {
+      step: '01',
+      icon: 'Building2',
+      title: 'Develop a real estate business in the field',
+      hook: 'More than 150 transactions representing over €50 million',
+      context: [
+        'As a real estate investor and later the head of two agencies, I developed end-to-end experience of property transactions: prospecting, winning mandates, qualifying projects, supporting sellers and buyers, negotiating and securing decisions.',
+        'This experience taught me that performance does not depend solely on market knowledge. It also relies on the ability to build trust, interpret motivations and help each party move towards a balanced decision.',
+      ],
+      valueCreated:
+        'Turn hands-on experience into a lasting ability to sell, negotiate and secure decisions.',
+      stats: [
+        {
+          figure: '150+',
+          label: 'transactions completed',
+        },
+        {
+          figure: '€50M+',
+          label: 'in real estate transaction volume',
+        },
+      ],
+      outcomes: [],
+      demonstrated: [
+        'Business Development',
+        'Customer Acquisition',
+        'Negotiation',
+        'Strategic Relationships',
+        'Complex Decisions',
+      ],
+    },
+    {
+      step: '02',
+      icon: 'Lightbulb',
+      title: 'Turn expertise into market-ready offerings',
+      hook: 'Create new sources of value for the real estate market',
+      context: [
+        'Real estate professionals operate in a highly competitive market where services are difficult to differentiate and remuneration largely depends on completing a sale.',
+        'In response, I designed VRP31J and Premium Vendeur, offerings that provide additional value to professionals and their clients. After observing existing practices and identifying underserved needs, I formalised a method and turned it into a clear, marketable and practical proposition.',
+        'These offerings reshape how a real estate project is prepared, presented and marketed: a better seller experience, stronger perceived service value and new points of differentiation for professionals.',
+      ],
+      valueCreated:
+        'Create new revenue streams by turning expertise into differentiated offerings.',
+      stats: [
+        {
+          figure: '2',
+          label: 'major proprietary offerings developed',
+        },
+      ],
+      outcomes: [
+        {
+          text: 'New revenue streams',
+          detail: 'expertise turned into marketable offerings',
+        },
+        {
+          text: 'Enhanced seller experience',
+          detail: 'additional value delivered to sellers',
+        },
+        {
+          text: 'Stronger differentiation',
+          detail: 'new sales arguments for professionals',
+        },
+      ],
+      demonstrated: [
+        'Commercial Innovation',
+        'Offer Design',
+        'Value Proposition',
+        'Positioning',
+        'Entrepreneurship',
+      ],
+    },
+    {
+      step: '03',
+      icon: 'MonitorSmartphone',
+      title: 'Build a digital acquisition system',
+      hook: 'Use technology to communicate value more effectively',
+      context: [
+        'I gradually built a digital acquisition, communication and presentation environment, primarily for real estate professionals: contact collection and qualification, segmentation, content creation, campaigns and digital tools to nurture relationships over time.',
+        'This system included Facebook campaigns, the creation of a YouTube channel, live digital presentations on social media and online presentation meetings.',
+        'I consistently sought tools that could improve presentations, make messages easier to communicate and create a more dynamic and engaging experience. Technology was never an end in itself, but a means of clarifying the value proposition, supporting relationships and improving the effectiveness of the commercial system.',
+      ],
+      valueCreated:
+        'Build a commercial asset capable of nurturing relationships and supporting acquisition over time.',
+      stats: [
+        {
+          figure: '4,133',
+          label: 'contacts recorded',
+        },
+        {
+          figure: '1,856',
+          label: 'real estate professionals',
+        },
+        {
+          figure: '56,743',
+          label: 'communications sent',
+        },
+      ],
+      outcomes: [],
+      demonstrated: [
+        'Digital Acquisition',
+        'Segmentation',
+        'Sales Presentations',
+        'Relationship Marketing',
+        'Automation',
+      ],
+    },
+    {
+      step: '04',
+      icon: 'MapPin',
+      title: 'Establish a foothold quickly in a new market',
+      hook: 'Deliver tangible results in an unfamiliar territory',
+      context: [
+        'As part of my collaboration with RE/MAX Orléans, I entered a territory I did not know, at a time when commercial performance was declining and collective momentum needed to be restored.',
+        'During the second phase of this collaboration, I had to understand the local market quickly, develop field prospecting, build new professional relationships and earn property owners’ trust.',
+        'Professionals who did not know me quickly embraced my process of preparation, organisation and field execution. This way of working restored motivation, momentum and a positive atmosphere within the agency, contributing to the recovery in commercial performance.',
+      ],
+      valueCreated:
+        'Demonstrate the ability to understand an unfamiliar territory quickly, mobilise new collaborations and deliver tangible results.',
+      stats: [
+        {
+          figure: '3 months',
+          label: 'to establish a foothold',
+        },
+        {
+          figure: '7',
+          label: 'mandates secured',
+        },
+        {
+          figure: '≈ 60%',
+          label: 'exclusive mandates',
+        },
+        {
+          figure: '1',
+          label: 'transaction completed',
+        },
+        {
+          figure: '1',
+          label: 'successful recruitment',
+        },
+      ],
+      outcomes: [],
+      demonstrated: [
+        'Prospecting',
+        'Adaptability',
+        'Network Development',
+        'Relationship Leadership',
+        'Team Mobilisation',
+      ],
+    },
+    {
+      step: '05',
+      icon: 'BadgeEuro',
+      title: 'Secure market acceptance for an offer paid before results',
+      hook: 'Create a business model that challenges established market practices',
+      context: [
+        'In traditional real estate brokerage, professional fees are largely contingent on completing the sale. Securing payment for support before the outcome therefore ran counter to established market practices.',
+        'By making the preparation, method, tools and value delivered before the transaction visible, Premium Vendeur established this support as a standalone service with its own economic value.',
+        'The main documented cases comprise eight Premium Vendeur clients, plus one case combining VRP31J and Premium Vendeur.',
+      ],
+      valueCreated:
+        'Make the value created visible, recognised and paid for before the final outcome.',
+      stats: [
+        {
+          figure: '9',
+          label: 'main cases identified',
+        },
+        {
+          figure: '€45.8K',
+          label: 'in commercial value',
+        },
+        {
+          figure: '€40.8K',
+          label: 'in documented payments received',
+        },
+        {
+          figure: '€5K+',
+          label: 'average value per case',
+        },
+      ],
+      outcomes: [],
+      resultsNote:
+        'Rounded amounts based on documented commercial cases: €45,838.70 in commercial value and €40,838.70 in payments received.',
+      demonstrated: [
+        'Value Creation',
+        'Offer Design',
+        'Service Sales',
+        'Business Model Innovation',
+        'Decision Support',
+      ],
+    },
+    {
+      step: '06',
+      icon: 'Globe2',
+      title: 'Develop a business in an international environment',
+      hook: 'Build a commercial relationship remotely',
+      context: [
+        'Based in Germany and operating through Lejour Consulting, I developed a business primarily serving the French market while being physically located in another country. This required communication, presentation and contracting methods capable of building trust remotely.',
+        'Digital exchanges, online presentations and remote meetings made it possible to qualify needs, present the value proposition and secure contract signatures. On-site client visits then took place selectively—not to trigger the decision, but to strengthen an already established relationship and support implementation.',
+        'This experience demonstrates that a strong commercial relationship does not depend on geographical proximity. It rests on the quality of communication, the clarity of the value proposition and the trust built throughout the journey.',
+      ],
+      valueCreated:
+        'Build trust and secure contracts despite geographical distance.',
+      stats: [],
+      outcomes: [
+        {
+          text: 'France / Germany',
+          detail: 'cross-border business',
+        },
+        {
+          text: 'Remote',
+          detail: 'offer presentations',
+        },
+        {
+          text: 'Digital',
+          detail: 'contracting and follow-up',
+        },
+        {
+          text: 'On site',
+          detail: 'targeted visits after commitment',
+        },
+      ],
+      demonstrated: [
+        'International Business Development',
+        'Remote Communication',
+        'Complex Sales',
+        'Adaptability',
+        'Cross-cultural Relationships',
+      ],
+    },
+  ],
+  cta: {
+    title: 'Contexts change. The logic remains the same.',
+    text:
+      'Understand the situation, identify the available value and create the conditions needed to turn it into results.',
+    primaryCta: 'Talk to Frédéric Lejour',
+    primaryHref: '/en/contact',
+    secondaryCta: 'Explore my expertise',
+    secondaryHref: '/en/expertise',
+  },
+};

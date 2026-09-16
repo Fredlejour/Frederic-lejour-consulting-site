@@ -551,3 +551,240 @@ export const careerDe: CareerContent = {
     primaryCta: 'Mit Frédéric ins Gespräch kommen',
   },
 };
+
+/**
+ * Contenu de la page Career (/en/career).
+ * Textes fournis et validés par Frédéric Lejour.
+ */
+export const careerEn: CareerContent = {
+  meta: {
+    title: 'Career — Frédéric Lejour',
+    description:
+      'Telecommunications, wealth management, real estate and consulting between France and Germany: Frédéric Lejour’s career in business development and strategic relationships.',
+  },
+  hero: {
+    eyebrow: 'CAREER',
+    title: [
+      'The field as a school',
+      'Relationships as a method',
+      'Value as the outcome',
+    ],
+    intro: [
+      'From telecommunications to real estate, from wealth management to entrepreneurship, my career has developed across different environments around one constant question: how can I understand a situation well enough to move a decision forward?',
+    ],
+  },
+  thread: {
+    eyebrow: 'A COMMON THREAD',
+    title: 'Three verbs, one shared logic',
+    intro: 'Whatever the environment, the approach remains the same.',
+    verbs: [
+      {
+        word: 'Understand',
+        explanation:
+          'Listen, analyse the market and identify the real motivations.',
+      },
+      {
+        word: 'Build',
+        explanation:
+          'Structure a proposition, a relationship or a commercial system.',
+      },
+      {
+        word: 'Grow',
+        explanation:
+          'Turn potential into customers, partnerships and results.',
+      },
+    ],
+  },
+  chapters: {
+    eyebrow: 'CAREER PATH',
+    title: 'Four environments, one shared capability',
+    manifesto: {
+      lines: ['Create the conditions', 'for a decision.'],
+      highlight: 'decision.',
+    },
+    retainedLabel: 'What I took from it',
+    items: [
+      {
+        step: '01',
+        environment: 'TELECOMMUNICATIONS',
+        title: 'Drive commercial performance',
+        narrative: [
+          'In telecommunications, I built a strong foundation in sales, negotiation and commercial management within a structured, results-driven environment. I held sales leadership responsibilities and managed ten people across two teams.',
+        ],
+        retained: [
+          'A culture of measurable results',
+          'Rigour in the sales process',
+          'Team management',
+        ],
+      },
+      {
+        step: '02',
+        environment: 'WEALTH MANAGEMENT',
+        title: 'Support decisions with lasting consequences',
+        narrative: [
+          'In wealth management, every decision affected my clients’ plans, financial balance and future. This experience taught me to combine analysis, listening and clear explanation to make complex choices understandable and build trust over time.',
+        ],
+        retained: [
+          'Listening to complex situations',
+          'Trust as a condition for decision-making',
+          'Analytical rigour',
+        ],
+      },
+      {
+        step: '03',
+        environment: 'REAL ESTATE AND ENTREPRENEURSHIP',
+        title: 'Build businesses and create new offerings',
+        narrative: [
+          'As an investor and later the head of two agencies, I developed end-to-end experience of property transactions and created offerings for property owners looking to sell, including VRP31J and Premium Vendeur, as well as a digital acquisition system.',
+        ],
+        retained: [
+          'Field action as a source of learning',
+          'Creating market-ready offerings',
+          'Developing a business end to end',
+        ],
+      },
+      {
+        step: '04',
+        environment: 'CONSULTING, DIGITAL AND INTERNATIONAL',
+        title: 'Grow beyond geographical proximity',
+        narrative: [
+          'Through Lejour Consulting, based in Germany, I developed a business primarily serving the French market: presenting offers, contracting and follow-up remotely, targeted on-site visits, and using digital tools and automation to amplify relationships.',
+        ],
+        retained: [
+          'Building trust without geographical proximity',
+          'Growing remotely without weakening the relationship',
+          'Putting technology at the service of people',
+        ],
+      },
+    ],
+  },
+  combinations: {
+    eyebrow: 'EVOLUTION',
+    title: 'What these experiences have built.',
+    intro: {
+      first: 'These capabilities did not simply follow one another.',
+      emphasis: 'They gradually came together.',
+    },
+    headers: {
+      inputs: 'Experience applied',
+      outcome: 'Capability built',
+    },
+    items: [
+      {
+        inputs: ['Sales', 'Management'],
+        outcome: 'Drive business development',
+        description:
+          'Extend direct selling into organisation, management and acquisition strategy.',
+      },
+      {
+        inputs: ['Analysis', 'Listening'],
+        outcome: 'Support decision-making',
+        description:
+          'Combine an understanding of the situation and its underlying motivations to move a complex choice forward.',
+      },
+      {
+        inputs: ['Field Experience', 'Entrepreneurship'],
+        outcome: 'Turn expertise into a marketable offering',
+        description:
+          'Transform field expertise into a structured, differentiated and market-ready value proposition.',
+      },
+      {
+        inputs: ['Digital', 'Artificial Intelligence'],
+        outcome: 'Build an enhanced commercial system',
+        description:
+          'Connect acquisition, communication, automation and relationships within one coherent system.',
+      },
+    ],
+  },
+  landmarks: {
+    eyebrow: 'CAREER IN NUMBERS',
+    title: 'Experience built over time and through action.',
+    items: [
+      {
+        figure: '20+',
+        label: 'years of commercial experience',
+      },
+      {
+        figure: '150+',
+        label: 'real estate transactions',
+      },
+      {
+        figure: '€50M+',
+        label: 'in real estate transaction volume',
+      },
+      {
+        figure: 'France · Germany',
+        label:
+          'First-hand knowledge of the business cultures, practices and environments of both countries.',
+      },
+    ],
+  },
+  positioning: {
+    title: 'Cross-functional experience in service of growth.',
+    text:
+      'Today, I bring together my experience in the field, consulting, negotiation and entrepreneurship to address Business Development, Account Management, strategic relationship and Customer Growth challenges.',
+    personas: {
+      eyebrow: 'COMPANIES AND MARKETS',
+      title: 'Where this profile can make a difference.',
+      intro:
+        'This experience is particularly valuable to companies that need to make an offering easier to understand, develop strategic relationships or turn commercial potential into tangible growth.',
+      contributionLabel: 'WHAT THIS PROFILE BRINGS',
+      items: [
+        {
+          market: 'PROPTECH AND THE REAL ESTATE ECOSYSTEM',
+          situation:
+            'A PropTech company, network or real estate service provider looking to accelerate adoption of its solution among agents, agencies and partners.',
+          contribution:
+            'Understand the field, structure the value proposition and mobilise a professional network.',
+        },
+        {
+          market: 'B2B SAAS, ARTIFICIAL INTELLIGENCE AND AUTOMATION',
+          situation:
+            'A software company with powerful technology that still needs to make its offering understandable, desirable and market-ready.',
+          contribution:
+            'Translate technology into tangible benefits and support complex decision-making.',
+        },
+        {
+          market: 'STRATEGIC ACCOUNTS AND PARTNERSHIPS',
+          situation:
+            'A company with customers, accounts or partners whose growth potential remains underdeveloped.',
+          contribution:
+            'Deepen relationships, identify new opportunities and build sustainable growth.',
+        },
+        {
+          market: 'FRANCE–GERMANY RELATIONSHIPS',
+          situation:
+            'A company operating between France and Germany that needs to adapt its communication and relationships to the conventions, practices and expectations on both sides.',
+          contribution:
+            'Facilitate mutual understanding and secure the development of relationships.',
+        },
+      ],
+    },
+    relatedLabel: 'EXPLORE FURTHER',
+    related: [
+      {
+        pageKey: 'approach',
+        label: 'Approach',
+        description:
+          'How I observe, learn and turn insight into action.',
+      },
+      {
+        pageKey: 'expertise',
+        label: 'Expertise',
+        description:
+          'The commercial, relationship and technological levers I apply.',
+      },
+      {
+        pageKey: 'work',
+        label: 'Projects',
+        description:
+          'Real-world situations in which this experience has created value.',
+      },
+    ],
+  },
+  cta: {
+    title:
+      'A career takes on its full meaning when it prepares you for the next step.',
+    primaryCta: 'Talk to Frédéric',
+  },
+};

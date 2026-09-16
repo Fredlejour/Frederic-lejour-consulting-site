@@ -256,3 +256,101 @@ export const contactDe: ContactContent = {
     text: 'Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.',
   },
 };
+
+/**
+ * Contenu de la page Contact anglaise (/en/contact).
+ *
+ * Textes fournis et validés par Frédéric Lejour (anglais britannique :
+ * organisation, enquiry). Même structure, même URL LinkedIn, même
+ * fonctionnement Web3Forms.
+ */
+export const contactEn: ContactContent = {
+  meta: {
+    title: 'Contact — Frédéric Lejour',
+    description:
+      'Contact Frédéric Lejour to discuss a professional opportunity, a business development project, a strategic relationship or a partnership.',
+  },
+  hero: {
+    eyebrow: 'Contact',
+    title: [
+      'A situation to understand',
+      'A potential to develop',
+      'Let’s talk',
+    ],
+    intro:
+      'Whether you are considering hiring, a collaboration, developing a market or growing a strategic relationship, our first conversation will simply help me understand your situation.',
+  },
+  reasons: {
+    eyebrow: 'Let’s talk',
+    title: 'Every conversation begins with listening.',
+    intro:
+      'Tell me about your context, your objectives or the challenge you are looking to solve.',
+    items: [
+      {
+        step: '01',
+        title: 'Professional opportunity',
+        description:
+          'Business Development, Account Management or strategic relationship roles.',
+      },
+      {
+        step: '02',
+        title: 'Project or collaboration',
+        description:
+          'Business development, offer structuring or customer acquisition.',
+      },
+      {
+        step: '03',
+        title: 'Partnership',
+        description:
+          'Creating shared value and developing lasting relationships.',
+      },
+      {
+        step: '04',
+        title: 'Exploratory conversation',
+        description:
+          'Sometimes a situation needs to be understood before a solution can be defined.',
+      },
+    ],
+  },
+  linkedin: {
+    label: 'Find me on LinkedIn',
+    href: 'https://www.linkedin.com/in/fredericlejour/',
+  },
+  form: {
+    title: 'Let’s start with a few details.',
+    fields: {
+      name: 'Full name',
+      email: 'Email address',
+      company: 'Company or organisation',
+      companyOptional: '(optional)',
+      subject: 'Reason for contacting me',
+      subjectPlaceholder: 'Select an option…',
+      subjectOptions: [
+        'Professional opportunity',
+        'Project or collaboration',
+        'Partnership',
+        'Other enquiry',
+      ],
+      message: 'Your message',
+    },
+    consent:
+      'I agree that the information I provide may be used solely to respond to my enquiry.',
+    reassurance:
+      'Your message will be sent directly to Frédéric Lejour. The information you provide will be used solely to process and respond to your enquiry.',
+    privacyLabel: 'Privacy policy',
+    submit: 'Send my message',
+    sending: 'Sending…',
+    honeypotLabel: 'Leave this field empty',
+    emailSubject: 'New message from lejourconsulting.com',
+  },
+  success: {
+    title: 'Your message has been sent.',
+    text:
+      'Thank you for your interest in my profile and expertise. I will personally review your enquiry.',
+    again: 'Send another message',
+  },
+  error: {
+    text:
+      'We couldn’t send your message. Please check your connection and try again.',
+  },
+};
