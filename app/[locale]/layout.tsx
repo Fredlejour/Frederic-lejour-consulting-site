@@ -7,6 +7,7 @@ import { SITE_URL } from '@/lib/routes';
 import { SkipLink } from '@/components/layout/SkipLink';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { ConsentProvider } from '@/components/consent/ConsentProvider';
 
 /**
  * Layout racine, par langue.
@@ -17,6 +18,11 @@ import { Footer } from '@/components/layout/Footer';
  *
  * Le Header, le Footer et le lien d’évitement sont présents sur toutes les
  * pages. Ils utilisent les variables de police déclarées via `next/font`.
+ *
+ * `ConsentProvider` englobe l’ensemble : il porte le choix du visiteur en
+ * matière de mesure d’audience, rend le bandeau de consentement et n’injecte
+ * Google Analytics qu’après acceptation. Sans identifiant de mesure
+ * configuré, il est entièrement transparent.
  */
 
 export const metadata: Metadata = {
@@ -43,10 +49,12 @@ export default function LocaleLayout({
       className={`${fontDisplay.variable} ${fontBody.variable}`}
     >
       <body className="bg-background text-foreground font-body antialiased">
-        <SkipLink locale={locale} />
-        <Header locale={locale} />
-        <main id="contenu">{children}</main>
-        <Footer locale={locale} />
+        <ConsentProvider locale={locale}>
+          <SkipLink locale={locale} />
+          <Header locale={locale} />
+          <main id="contenu">{children}</main>
+          <Footer locale={locale} />
+        </ConsentProvider>
       </body>
     </html>
   );

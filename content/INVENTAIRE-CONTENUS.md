@@ -322,3 +322,109 @@ Point à arbitrer : ce transfert hors UE est un sujet sensible pour une cible al
 | `ABANDONNÉ` | 2 |
 
 **Conséquence directe** : en l'état, aucune page du nouveau site ne peut être rédigée. Les blocs les plus critiques sont Q1 (parcours daté), Q2 (chiffres), Q6 (photographies) et Q4 (contenu des études de cas). Les Phases 1 et 2 (fondations techniques et design system) peuvent avancer en parallèle de la collecte.
+
+---
+
+## Mesure d’audience, consentement et confidentialité — état validé au 17 septembre 2026
+
+> Section documentaire. Elle consigne l’état **validé en local** du système de consentement et de mesure Google Analytics 4. **Aucun identifiant réel ni secret ne figure dans ce fichier** : l’identifiant de mesure est fourni hors dépôt.
+
+### 1. Architecture de mesure
+
+- Une seule propriété GA4 et un seul flux Web pour tout `www.lejourconsulting.com`.
+- Les langues sont distinguées par les chemins `/fr`, `/de` et `/en`.
+- Le code utilise un ID de mesure au format `G-XXXXXXXXXX` ; l’ID numérique du flux n’est pas utilisé dans le code.
+- La valeur réelle est fournie localement par `.env.local` (fichier ignoré par Git) ; `.env.example` ne contient qu’un placeholder.
+- La configuration de la variable dans Vercel reste à effectuer.
+
+### 2. Consentement strict préalable
+
+Avant acceptation : aucun chargement de `gtag.js`, aucune requête Google Analytics, aucun cookie `_ga` ou `_ga_*`.
+
+Cookie fonctionnel du choix :
+
+- nom : `lc_consent` ; valeurs : `granted` ou `denied` ;
+- `Path=/` ; `SameSite=Lax` ; durée : 182 jours (environ six mois) ; `Secure` automatiquement en HTTPS ;
+- choix commun aux trois langues ; aucun `localStorage` ni `sessionStorage`.
+
+Si l’ID GA4 est absent ou vide : aucune bannière, aucun bouton de préférences, aucun cookie de consentement, aucun chargement Google, aucune erreur applicative.
+
+### 3. Interface de consentement
+
+- Bannière en français, allemand et anglais ; lien localisé vers la page de confidentialité.
+- Acceptation et refus de poids visuel équivalent ; bouton de réouverture des préférences dans le pied de page ; Échap referme les préférences sans changer le choix.
+- Navigation clavier, focus visible, respect de `prefers-reduced-motion`.
+- Sur mobile : boutons toujours côte à côte, largeur égale, hauteur minimale de 48 px ; `gap-2` sur mobile et `sm:gap-3` à partir du point de rupture `sm`.
+- Rendu desktop validé et conservé.
+
+### 4. Configuration et envoi GA4
+
+- `dataLayer` et `gtag` ne sont initialisés qu’après consentement ; la fonction `gtag` pousse l’objet JavaScript natif `arguments`.
+- Configuration : `send_page_view: false` ; `cookie_expires: 34128000` (environ 395 jours) ; `cookie_update: false` ; `cookie_path: '/'` ; `cookie_domain: 'auto'`.
+- `page_view` envoyé manuellement : une fois après acceptation, puis une fois par changement réel de chemin.
+- `page_location` reconstruit avec l’origine et le chemin uniquement : aucun paramètre de requête transmis.
+
+### 5. Sécurisation de l’initialisation
+
+Correctif final présent dans `lib/consent.ts` :
+
+- indicateur `gtagInitialised` placé au niveau du module, avec sortie anticipée dans `initGtag()` si l’initialisation a déjà eu lieu ;
+- garde positionnée avant les commandes `js` et `config`, bloquant également un appel réentrant ;
+- une seule publication des commandes `js` et `config` par document ;
+- la garde survit aux démontages et remontages React lors des changements de langue (le layout racine est porté par le segment dynamique `[locale]`) ;
+- un véritable rechargement crée un nouveau document JavaScript et remet naturellement la garde à `false` — aucun cookie, stockage ou mécanisme de purge supplémentaire ;
+- déduplication des `page_view` dans `Analytics.tsx` conservée telle quelle (par `ref` locale).
+
+### 6. Réglage administratif GA4 anti-doublon
+
+Chemin : `Administration → Flux de données → Flux Web → Mesures améliorées → Pages vues → Paramètres avancés`.
+
+- `Chargements de pages` : **activé** ; `Changements de pages selon les événements de l’historique du navigateur` : **désactivé** (réglage validé).
+- L’application envoie elle-même les pages vues ; `send_page_view: false` empêche la page vue automatique liée au `config`, mais pas celle générée par la mesure améliorée sur les événements d’historique — l’option active provoquait un second `page_view` différé.
+- Cette option doit rester désactivée tant que les pages vues sont gérées manuellement.
+
+### 7. Refus et retrait
+
+- **Premier refus** : `lc_consent=denied`, aucun cookie GA4, aucune requête Google, aucun rechargement inutile.
+- **Retrait après acceptation** : `lc_consent` passe à `denied` ; activation de `window['ga-disable-<ID>']` ; suppression des cookies `_ga` et `_ga_*` pour les domaines applicables ; blocage des nouveaux envois ; rechargement de la page.
+
+### 8. Tests effectivement validés
+
+- **Avant consentement** : bannière dans la langue courante ; aucun cookie, aucun script Google, aucune requête `collect`.
+- **Refus** : seul `lc_consent=denied` ; aucun `_ga` ni `_ga_*` ; aucune requête GA4 ; refus conservé entre FR, DE et EN.
+- **Acceptation** : `lc_consent=granted` ; chargement de `gtag.js` ; création de `_ga` et `_ga_*` ; requêtes `collect` en HTTP 204 ; un seul `page_view` initial.
+- **Navigation multilingue** (après désactivation du suivi automatique de l’historique dans GA4) : FR, DE puis EN produisent chacun un seul `page_view`, sans hit différé après environ 30 secondes ; trois pages visitées = trois `page_view`.
+- **Idempotence** : validation sur le build de production local (port 3200) — `{config: 1, js: 1}` sur FR, puis après FR → DE et DE → EN ; aucune nouvelle commande `js` ou `config` lors des changements de langue.
+- **Vérifications techniques** : `npm run typecheck`, `npm run lint` (aucun avertissement), `npm run build` et `git diff --check` en succès ; 29 pages statiques ou SSG ; aucun passage en rendu dynamique ; poids JavaScript inchangé.
+
+### 9. Éléments sans rapport avec GA4
+
+- L’erreur `Cannot read properties of undefined (reading 'startTime')` avec `reportAllChanges` provient d’un script injecté par une extension Chrome, pas du site ni de GA4 ; elle n’altère pas les résultats `{config: 1, js: 1}`.
+- Le `favicon.ico` en 404 est un sujet séparé restant à traiter.
+
+### 10. Fichiers de la Phase A
+
+- `lib/consent.ts`
+- `components/consent/ConsentProvider.tsx`
+- `components/consent/ConsentBanner.tsx`
+- `components/consent/Analytics.tsx`
+- `components/layout/CookiePreferencesButton.tsx`
+- `components/layout/Footer.tsx`
+- `app/[locale]/layout.tsx`
+- `lib/ui.ts`
+- `.env.example` (placeholder uniquement)
+- `.env.local` (local uniquement, ignoré par Git — ne jamais recopier l’identifiant réel)
+
+### 11. État du projet et travaux restants
+
+**État** : Phase A implémentée et validée localement. Aucun commit, aucun push, aucun déploiement, aucune configuration Vercel réalisée, aucune modification juridique réalisée.
+
+**Restent à traiter avant la production** :
+
+- mise à jour des textes FR/DE/EN dans `content/legal.ts` : informations sur GA4, cookies, durées et retrait, bases juridiques applicables, rôle de Google Ireland / Google LLC et transferts internationaux ;
+- validation de la conservation des données GA4 ;
+- contrôle de Google Signals, de la personnalisation publicitaire et des données fournies par l’utilisateur ;
+- configuration de la variable d’environnement dans Vercel ;
+- validation en Preview puis validation juridique ;
+- déploiement Production ;
+- correction séparée du favicon.

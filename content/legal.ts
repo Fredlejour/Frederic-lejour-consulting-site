@@ -54,6 +54,9 @@ const VERCEL_PRIVACY_URL = 'https://vercel.com/legal/privacy-notice';
 const VERCEL_DPA_URL = 'https://vercel.com/legal/dpa';
 const WEB3FORMS_PRIVACY_URL = 'https://web3forms.com/privacy';
 const LFDI_RLP_URL = 'https://www.datenschutz.rlp.de';
+const GOOGLE_PRIVACY_URL = 'https://policies.google.com/privacy';
+const GOOGLE_PARTNER_SITES_URL = 'https://policies.google.com/technologies/partner-sites';
+const GOOGLE_PROCESSOR_TERMS_URL = 'https://business.safety.google/processorterms/';
 
 /* ─────────────────────────── Mentions légales — FR ─────────────────────────── */
 
@@ -325,7 +328,7 @@ export const privacyFr: LegalPageContent = {
     title: 'Politique de confidentialité',
     intro:
       'Cette page explique quelles données peuvent être traitées lors de votre navigation ou lorsque vous contactez Frédéric Lejour.',
-    updated: 'Dernière mise à jour : 11 septembre 2026',
+    updated: 'Dernière mise à jour : 17 septembre 2026',
   },
   sections: [
     {
@@ -441,7 +444,44 @@ export const privacyFr: LegalPageContent = {
         {
           type: 'paragraphs',
           items: [
-            'Aucun outil de mesure d’audience ou de suivi n’est actuellement utilisé sur ce site. Si un tel outil est ajouté ultérieurement, cette section sera actualisée et, lorsque la réglementation l’exige, votre consentement sera demandé préalablement.',
+            'Ce site utilise Google Analytics 4, un service de mesure d’audience fourni par Google Ireland Limited. Ce service n’est activé qu’après votre consentement exprès, recueilli par le bandeau affiché lors de votre première visite. Avant votre accord, aucune donnée de mesure n’est collectée ni transmise à Google.',
+            'Google Analytics 4 permet de comprendre comment les pages sont consultées (pages vues, parcours, durées de visite, interactions de base) et d’améliorer les contenus du site. Les rapports consultés sont agrégés.',
+            'Les données susceptibles d’être traitées sont les suivantes :',
+          ],
+        },
+        {
+          type: 'list',
+          items: [
+            'pages consultées et interactions ;',
+            'informations techniques sur le navigateur, l’appareil et le système ;',
+            'paramètres de langue ;',
+            'localisation géographique approximative ;',
+            'identifiants pseudonymes stockés dans des cookies.',
+          ],
+        },
+        {
+          type: 'paragraphs',
+          items: [
+            'Adresse IP : pour les visiteurs situés dans l’Union européenne, Google indique que l’adresse IP est utilisée pour déterminer une localisation géographique approximative, puis supprimée avant toute journalisation et tout stockage.',
+            'Certains traitements peuvent être opérés par Google LLC ou d’autres entités du groupe Google, notamment aux États-Unis. Selon Google, ces transferts sont encadrés par les mécanismes applicables, notamment le cadre EU–US Data Privacy Framework et les clauses contractuelles types.',
+            'Durée de conservation : les données au niveau utilisateur et au niveau événement sont conservées 14 mois dans Google Analytics, conformément au paramétrage retenu. Cette durée ne s’applique pas de la même manière aux rapports agrégés standards.',
+            'Bases juridiques : le dépôt et la lecture des cookies de mesure sont fondés sur votre consentement au sens du § 25, alinéa 1, de la loi allemande sur la protection des données dans les télécommunications et les services numériques (TDDDG) ; le traitement ultérieur des données est fondé sur votre consentement au sens de l’article 6, paragraphe 1, point a du RGPD.',
+            'Vous pouvez retirer votre consentement à tout moment via le lien « Préférences de confidentialité » présent en pied de page de chaque page. Le retrait empêche tout envoi ultérieur et supprime les cookies de mesure ; il n’a pas d’effet rétroactif.',
+          ],
+        },
+        {
+          type: 'links',
+          items: [
+            { label: 'Règles de confidentialité de Google', href: GOOGLE_PRIVACY_URL },
+            {
+              label:
+                'Comment Google utilise les données issues des sites qui utilisent ses services',
+              href: GOOGLE_PARTNER_SITES_URL,
+            },
+            {
+              label: 'Conditions de traitement des données de Google',
+              href: GOOGLE_PROCESSOR_TERMS_URL,
+            },
           ],
         },
       ],
@@ -452,8 +492,21 @@ export const privacyFr: LegalPageContent = {
         {
           type: 'paragraphs',
           items: [
-            'Ce site n’utilise actuellement que les éléments strictement nécessaires à son fonctionnement. Aucun cookie ni traceur soumis au consentement n’est déposé.',
-            'Il n’existe donc pas de gestionnaire de consentement à configurer pour le moment. Si des traceurs soumis au consentement sont introduits, un mécanisme de choix sera mis en place avant leur activation.',
+            'Ce site dépose un cookie, lc_consent, qui contient uniquement la valeur granted ou denied. Il sert exclusivement à mémoriser et à respecter votre choix concernant la mesure d’audience, et il est conservé six mois. Il est considéré comme strictement nécessaire à la conservation de ce choix.',
+            'Sous réserve de votre consentement, Google Analytics dépose les cookies suivants :',
+          ],
+        },
+        {
+          type: 'list',
+          items: [
+            '_ga : distingue les visiteurs de manière pseudonyme — durée maximale de 13 mois ;',
+            '_ga_* : conserve l’état de la session de mesure — durée maximale de 13 mois.',
+          ],
+        },
+        {
+          type: 'paragraphs',
+          items: [
+            'En cas de refus ou de retrait du consentement, ces cookies ne sont pas déposés, ou sont supprimés. Aucun autre traceur n’est utilisé sur ce site.',
           ],
         },
       ],
@@ -539,7 +592,7 @@ export const privacyDe: LegalPageContent = {
     title: 'Datenschutzerklärung',
     intro:
       'Diese Seite erläutert, welche Daten beim Besuch dieser Website oder bei einer Kontaktaufnahme mit Frédéric Lejour verarbeitet werden können.',
-    updated: 'Zuletzt aktualisiert: 11. September 2026',
+    updated: 'Zuletzt aktualisiert: 17. September 2026',
   },
   sections: [
     {
@@ -655,7 +708,44 @@ export const privacyDe: LegalPageContent = {
         {
           type: 'paragraphs',
           items: [
-            'Auf dieser Website werden derzeit keine Analyse- oder Trackingdienste eingesetzt. Sollte künftig ein solcher Dienst hinzugefügt werden, wird diese Erklärung aktualisiert und – soweit gesetzlich erforderlich – vorab Ihre Einwilligung eingeholt.',
+            'Diese Website verwendet Google Analytics 4, einen Dienst zur Reichweitenmessung der Google Ireland Limited. Der Dienst wird erst nach Ihrer ausdrücklichen Einwilligung aktiviert, die über das beim ersten Besuch angezeigte Banner eingeholt wird. Vor Ihrer Zustimmung werden keine Messdaten erhoben oder an Google übertragen.',
+            'Google Analytics 4 dient dazu, die Nutzung der Seiten zu verstehen (Seitenaufrufe, Klickpfade, Verweildauer, grundlegende Interaktionen) und die Inhalte der Website zu verbessern. Die ausgewerteten Berichte sind aggregiert.',
+            'Dabei können insbesondere folgende Daten verarbeitet werden:',
+          ],
+        },
+        {
+          type: 'list',
+          items: [
+            'aufgerufene Seiten und Interaktionen;',
+            'technische Angaben zu Browser, Gerät und Betriebssystem;',
+            'Spracheinstellungen;',
+            'ungefährer geografischer Standort;',
+            'pseudonyme Kennungen in Cookies.',
+          ],
+        },
+        {
+          type: 'paragraphs',
+          items: [
+            'IP-Adresse: Für Besucher in der Europäischen Union wird die IP-Adresse nach Angaben von Google zur Bestimmung eines ungefähren geografischen Standorts verwendet und vor jeder Protokollierung und Speicherung gelöscht.',
+            'Einzelne Verarbeitungen können durch Google LLC oder andere Unternehmen der Google-Gruppe erfolgen, insbesondere in den USA. Nach Angaben von Google sind diese Übermittlungen durch die jeweils anwendbaren Mechanismen abgesichert, insbesondere durch das EU-US Data Privacy Framework und Standardvertragsklauseln.',
+            'Speicherdauer: Daten auf Nutzer- und Ereignisebene werden in Google Analytics 14 Monate aufbewahrt, entsprechend der gewählten Einstellung. Diese Frist gilt nicht in gleicher Weise für aggregierte Standardberichte.',
+            'Rechtsgrundlagen: Das Setzen und Auslesen der Mess-Cookies beruht auf Ihrer Einwilligung gemäß § 25 Abs. 1 TDDDG; die anschließende Verarbeitung der Daten beruht auf Ihrer Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO.',
+            'Sie können Ihre Einwilligung jederzeit über den Link „Cookie-Einstellungen“ im Fußbereich jeder Seite widerrufen. Der Widerruf verhindert künftige Datenübertragungen und löscht die Mess-Cookies; er wirkt nicht rückwirkend.',
+          ],
+        },
+        {
+          type: 'links',
+          items: [
+            { label: 'Datenschutzerklärung von Google', href: GOOGLE_PRIVACY_URL },
+            {
+              label:
+                'Wie Google Daten von Websites nutzt, die Google-Dienste verwenden',
+              href: GOOGLE_PARTNER_SITES_URL,
+            },
+            {
+              label: 'Datenverarbeitungsbedingungen von Google',
+              href: GOOGLE_PROCESSOR_TERMS_URL,
+            },
           ],
         },
       ],
@@ -666,8 +756,21 @@ export const privacyDe: LegalPageContent = {
         {
           type: 'paragraphs',
           items: [
-            'Diese Website verwendet derzeit ausschließlich technisch notwendige Elemente. Es werden keine einwilligungspflichtigen Cookies oder Tracker gesetzt.',
-            'Ein Einwilligungsmanagement ist daher derzeit nicht eingerichtet. Sollten einwilligungspflichtige Tracker eingeführt werden, wird vor deren Aktivierung ein Auswahlmechanismus bereitgestellt.',
+            'Diese Website setzt ein Cookie, lc_consent, das ausschließlich den Wert granted oder denied enthält. Es dient ausschließlich dazu, Ihre Entscheidung zur Reichweitenmessung zu speichern und zu respektieren, und wird sechs Monate aufbewahrt. Es gilt als für die Speicherung dieser Entscheidung unbedingt erforderlich.',
+            'Mit Ihrer Einwilligung setzt Google Analytics folgende Cookies:',
+          ],
+        },
+        {
+          type: 'list',
+          items: [
+            '_ga: unterscheidet Besucher pseudonym — maximale Laufzeit 13 Monate;',
+            '_ga_*: speichert den Sitzungszustand der Messung — maximale Laufzeit 13 Monate.',
+          ],
+        },
+        {
+          type: 'paragraphs',
+          items: [
+            'Bei Ablehnung oder Widerruf der Einwilligung werden diese Cookies nicht gesetzt bzw. gelöscht. Darüber hinaus werden auf dieser Website keine weiteren Tracker eingesetzt.',
           ],
         },
       ],
@@ -883,7 +986,7 @@ export const privacyEn: LegalPageContent = {
     title: 'Privacy policy',
     intro:
       'This page explains which data may be processed when you browse this website or contact Frédéric Lejour.',
-    updated: 'Last updated: 11 September 2026',
+    updated: 'Last updated: 17 September 2026',
   },
   sections: [
     {
@@ -999,7 +1102,44 @@ export const privacyEn: LegalPageContent = {
         {
           type: 'paragraphs',
           items: [
-            'No audience measurement or tracking tool is currently used on this site. If such a tool is added in the future, this section will be updated and, where required by regulation, your consent will be requested beforehand.',
+            'This website uses Google Analytics 4, an audience measurement service provided by Google Ireland Limited. The service is only activated after your express consent, collected via the banner displayed on your first visit. Before your approval, no measurement data is collected or transmitted to Google.',
+            'Google Analytics 4 is used to understand how pages are used (pages viewed, click paths, time spent, basic interactions) and to improve the site’s content. The reports consulted are aggregated.',
+            'The following data may be processed:',
+          ],
+        },
+        {
+          type: 'list',
+          items: [
+            'pages viewed and interactions;',
+            'technical information about the browser, device and operating system;',
+            'language settings;',
+            'approximate geographical location;',
+            'pseudonymous identifiers stored in cookies.',
+          ],
+        },
+        {
+          type: 'paragraphs',
+          items: [
+            'IP address: for visitors located in the European Union, Google states that the IP address is used to determine an approximate geographical location and is then deleted before any logging or storage.',
+            'Some processing may be carried out by Google LLC or other Google group companies, in particular in the United States. According to Google, such transfers are governed by the applicable mechanisms, in particular the EU–US Data Privacy Framework and standard contractual clauses.',
+            'Retention: user-level and event-level data is retained in Google Analytics for 14 months, in accordance with the selected setting. This period does not apply in the same way to standard aggregate reports.',
+            'Legal bases: the storing and reading of the measurement cookies are based on your consent within the meaning of Section 25(1) of the German Telecommunications and Digital Services Data Protection Act (TDDDG); the subsequent processing of data is based on your consent within the meaning of Article 6(1)(a) GDPR.',
+            'You can withdraw your consent at any time via the “Privacy preferences” link in the footer of every page. Withdrawal prevents any future data transmission and deletes the measurement cookies; it has no retroactive effect.',
+          ],
+        },
+        {
+          type: 'links',
+          items: [
+            { label: 'Google privacy policy', href: GOOGLE_PRIVACY_URL },
+            {
+              label:
+                'How Google uses data from sites that use its services',
+              href: GOOGLE_PARTNER_SITES_URL,
+            },
+            {
+              label: 'Google data processing terms',
+              href: GOOGLE_PROCESSOR_TERMS_URL,
+            },
           ],
         },
       ],
@@ -1010,8 +1150,21 @@ export const privacyEn: LegalPageContent = {
         {
           type: 'paragraphs',
           items: [
-            'This site currently uses only the elements strictly necessary for its operation. No cookies or trackers subject to consent are set.',
-            'There is therefore no consent manager to configure at this time. If trackers subject to consent are introduced, a choice mechanism will be put in place before they are activated.',
+            'This site sets a cookie, lc_consent, which contains only the value granted or denied. It serves exclusively to store and respect your audience measurement choice, and it is retained for six months. It is considered strictly necessary to preserve this choice.',
+            'Subject to your consent, Google Analytics sets the following cookies:',
+          ],
+        },
+        {
+          type: 'list',
+          items: [
+            '_ga: distinguishes visitors pseudonymously — maximum lifetime of 13 months;',
+            '_ga_*: stores the measurement session state — maximum lifetime of 13 months.',
+          ],
+        },
+        {
+          type: 'paragraphs',
+          items: [
+            'If you refuse or withdraw consent, these cookies are not set, or are deleted. No other trackers are used on this site.',
           ],
         },
       ],

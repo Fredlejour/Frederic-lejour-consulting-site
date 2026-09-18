@@ -41,6 +41,13 @@ const uiStrings = {
     labelCurrentPage: 'Page actuelle',
     wordmark: 'Frédéric Lejour',
     tagline: 'Business Development • Relations stratégiques • Growth',
+    consentTitle: 'Respect de votre vie privée',
+    consentText:
+      'Ce site utilise Google Analytics pour mesurer son audience. Ces mesures ne sont activées qu’avec votre accord : aucune donnée n’est transmise à Google sans votre consentement, et vous pouvez modifier votre choix à tout moment.',
+    consentAccept: 'Accepter les statistiques',
+    consentReject: 'Refuser',
+    consentLearnMore: 'En savoir plus',
+    consentManage: 'Préférences de confidentialité',
   },
   de: {
     skipLink: 'Zum Inhalt springen',
@@ -82,6 +89,13 @@ const uiStrings = {
     labelCurrentPage: 'Aktuelle Seite',
     wordmark: 'Frédéric Lejour',
     tagline: 'Business Development • Strategische Beziehungen • Growth',
+    consentTitle: 'Ihre Privatsphäre',
+    consentText:
+      'Diese Website verwendet Google Analytics zur Reichweitenmessung. Die Messung wird nur mit Ihrer Einwilligung aktiviert: ohne Ihre Zustimmung werden keine Daten an Google übertragen, und Sie können Ihre Entscheidung jederzeit ändern.',
+    consentAccept: 'Statistiken akzeptieren',
+    consentReject: 'Ablehnen',
+    consentLearnMore: 'Mehr erfahren',
+    consentManage: 'Cookie-Einstellungen',
   },
   en: {
     skipLink: 'Skip to content',
@@ -123,6 +137,13 @@ const uiStrings = {
     labelCurrentPage: 'Current page',
     wordmark: 'Frédéric Lejour',
     tagline: 'Business Development • Strategic relationships • Growth',
+    consentTitle: 'Your privacy',
+    consentText:
+      'This site uses Google Analytics to measure its audience. Measurement is only activated with your consent: no data is sent to Google without your approval, and you can change your choice at any time.',
+    consentAccept: 'Accept statistics',
+    consentReject: 'Decline',
+    consentLearnMore: 'Learn more',
+    consentManage: 'Privacy preferences',
   },
 } as const;
 

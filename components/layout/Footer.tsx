@@ -4,6 +4,7 @@ import { footerNavKeys, mainNavKeys, pathFor, routeLabels } from '@/lib/routes';
 import { ui, uiWithYear } from '@/lib/ui';
 import { Container } from '@/components/ui/Container';
 import { Separator } from '@/components/ui/Separator';
+import { CookiePreferencesButton } from './CookiePreferencesButton';
 
 export function Footer({ locale }: { locale: Locale }) {
   const year = new Date().getFullYear();
@@ -49,6 +50,7 @@ export function Footer({ locale }: { locale: Locale }) {
                     </Link>
                   </li>
                 ))}
+                <CookiePreferencesButton locale={locale} />
               </ul>
             </div>
           </div>
